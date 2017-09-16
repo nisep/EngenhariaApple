@@ -1,0 +1,23 @@
+CRUD -> 40 horas
+
+Telas -> 80 horas
+
+login -> 6 horas
+
+Banco de dados -> 60 horas
+
+Introdução, escopo e descrição de funcionamento -> 4 horas
+
+Especificação de requisitos -> 20 horas
+
+Projeto arquitetural -> 10 horas
+
+Projeto de dados -> 20 horas
+
+Projeto lógico -> 20 horas
+
+Qualidade Software -> 30 horas
+
+Testes -> 30 horas
+
+Total = 280 horas

@@ -1,0 +1,12 @@
+cliente: id, nome, end, cpf, foto
+produto: id, nome, preco, qtd, foto, precocompra
+func: id, nome, salario, totalvendas, totalvendasmes, foto
+Pedido: id, valor, pago, idconta, data, dataVenc, 
+NotaEntrada: data, numero, fornecedor, total,  
+
+
+ent_prod: id, idnotaentrada, idpro, qtd, valorunitario
+ped_prod: id, idped, idpro
+Conta: id, codcli, aReceber,
+
+
