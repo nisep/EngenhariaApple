@@ -53,8 +53,12 @@ public class CadastroFuncionarioView extends JDialog {
 	private JTextField textTelefone;
 	private JLabel lblCelular;
 	private JTextField textCelular;
-	private JPasswordField password1;
-	private JPasswordField password2;
+	private JLabel lblSenha;
+	private JPasswordField textPassword1;
+	private JLabel lblConfirmarSenha;
+	private JPasswordField textPassword2;
+	private JCheckBox chckbxAdministrador;
+	private JLabel lblFoto;
 
 	public static void main(String[] args) {
 		try {
@@ -83,6 +87,7 @@ public class CadastroFuncionarioView extends JDialog {
 		this.setModal(true);
 		setBounds(100, 100, 649, 700);
 		setContentPane(getContentPanel());
+		setLocationRelativeTo(null);
 
 	}
 
@@ -98,6 +103,8 @@ public class CadastroFuncionarioView extends JDialog {
 		if (panelFoto == null) {
 			panelFoto = new JPanel();
 			panelFoto.setBounds(348, 292, 275, 281);
+			panelFoto.setLayout(null);
+			panelFoto.add(getLblFoto());
 		}
 		return panelFoto;
 
@@ -144,31 +151,14 @@ public class CadastroFuncionarioView extends JDialog {
 			contentPanel.add(getLblTelefone());
 			contentPanel.add(getTextTelefone());
 			contentPanel.add(getLblCelular());
+			contentPanel.add(getTextCelular());
+			contentPanel.add(getLblSenha());
+			contentPanel.add(getTextPassword1());
+			contentPanel.add(getLblConfirmarSenha());
+			contentPanel.add(getTextPassword2());
 			
-			textCelular = new JTextField();
-			textCelular.setBounds(339, 152, 284, 20);
-			contentPanel.add(textCelular);
-			textCelular.setColumns(10);
 			
-			JLabel lblSenha = new JLabel("Senha");
-			lblSenha.setBounds(339, 183, 284, 14);
-			contentPanel.add(lblSenha);
-			
-			password1 = new JPasswordField();
-			password1.setBounds(339, 208, 284, 20);
-			contentPanel.add(password1);
-			
-			JLabel lblConfirmarSenha = new JLabel("Confirmar Senha");
-			lblConfirmarSenha.setBounds(339, 242, 284, 14);
-			contentPanel.add(lblConfirmarSenha);
-			
-			password2 = new JPasswordField();
-			password2.setBounds(339, 261, 284, 20);
-			contentPanel.add(password2);
-			
-			JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
-			chckbxAdministrador.setBounds(30, 615, 147, 23);
-			contentPanel.add(chckbxAdministrador);
+			contentPanel.add(getChckbxAdministrador());
 			
 			
 		}
@@ -200,7 +190,7 @@ public class CadastroFuncionarioView extends JDialog {
 		return lblCodigo;
 	}
 
-	private JLabel getLblNome() {
+	public JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome");
 			lblNome.setBounds(30, 70, 46, 14);
@@ -241,7 +231,7 @@ public class CadastroFuncionarioView extends JDialog {
 		return lblDataCadastro;
 	}
 
-	private JTextField getTextSalario() {
+	public JTextField getTextSalario() {
 		if (textSalario == null) {
 			textSalario = new JTextField();
 			textSalario.setBounds(30, 152, 281, 20);
@@ -249,7 +239,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textSalario;
 	}
-	private JLabel getLblSalario() {
+	public JLabel getLblSalario() {
 		if (lblSalario == null) {
 			lblSalario = new JLabel("Sal\u00E1rio (R$)");
 			lblSalario.setBounds(30, 126, 281, 14);
@@ -258,14 +248,14 @@ public class CadastroFuncionarioView extends JDialog {
 	}
 	
 	
-	private JLabel getLblComissao() {
+	public JLabel getLblComissao() {
 		if (lblComissao == null) {
 			lblComissao = new JLabel("Comiss\u00E3o (%)");
 			lblComissao.setBounds(30, 183, 281, 14);
 		}
 		return lblComissao;
 	}
-	private JTextField getTextComissao() {
+	public JTextField getTextComissao() {
 		if (textComissao == null) {
 			textComissao = new JTextField();
 			textComissao.setBounds(30, 208, 281, 20);
@@ -274,14 +264,14 @@ public class CadastroFuncionarioView extends JDialog {
 		return textComissao;
 	}
 	
-	private JLabel getLblCPF() {
+	public JLabel getLblCPF() {
 		if (lblCPF == null) {
 			lblCPF = new JLabel("CPF");
 			lblCPF.setBounds(30, 242, 281, 14);
 		}
 		return lblCPF;
 	}
-	private JTextField getTextCPF() {
+	public JTextField getTextCPF() {
 		if (textCPF == null) {
 			textCPF = new JTextField();
 			textCPF.setBounds(30, 261, 281, 20);
@@ -292,14 +282,14 @@ public class CadastroFuncionarioView extends JDialog {
 	
 	
 	
-	private JLabel getLblRua() {
+	public JLabel getLblRua() {
 		if (lblRua == null) {
 			lblRua = new JLabel("Rua");
 			lblRua.setBounds(30, 292, 281, 14);
 		}
 		return lblRua;
 	}
-	private JTextField getTextRua() {
+	public JTextField getTextRua() {
 		if (textRua == null) {
 			textRua = new JTextField();
 			textRua.setBounds(30, 310, 204, 20);
@@ -307,7 +297,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textRua;
 	}
-	private JTextField getTextBairro() {
+	public JTextField getTextBairro() {
 		if (textBairro == null) {
 			textBairro = new JTextField();
 			textBairro.setBounds(30, 363, 281, 20);
@@ -315,7 +305,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textBairro;
 	}
-	private JTextField getTextCidade() {
+	public JTextField getTextCidade() {
 		if (textCidade == null) {
 			textCidade = new JTextField();
 			textCidade.setBounds(30, 414, 281, 20);
@@ -323,7 +313,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCidade;
 	}
-	private JLabel getLblBairro() {
+	public JLabel getLblBairro() {
 		if (lblBairro == null) {
 			lblBairro = new JLabel("Bairro");
 			lblBairro.setBounds(30, 341, 281, 14);
@@ -332,21 +322,21 @@ public class CadastroFuncionarioView extends JDialog {
 	}
 	
 	
-	private JLabel getLblCidade() {
+	public JLabel getLblCidade() {
 		if (lblCidade == null) {
 			lblCidade = new JLabel("Cidade");
 			lblCidade.setBounds(30, 394, 281, 14);
 		}
 		return lblCidade;
 	}
-	private JLabel getLblNumero() {
+	public JLabel getLblNumero() {
 		if (lblNumero == null) {
 			lblNumero = new JLabel("Numero");
 			lblNumero.setBounds(249, 292, 62, 14);
 		}
 		return lblNumero;
 	}
-	private JTextField getTextNumero() {
+	public JTextField getTextNumero() {
 		if (textNumero == null) {
 			textNumero = new JTextField();
 			textNumero.setBounds(244, 310, 67, 20);
@@ -354,14 +344,14 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textNumero;
 	}
-	private JLabel getLblComplemento() {
+	public JLabel getLblComplemento() {
 		if (lblComplemento == null) {
 			lblComplemento = new JLabel("Complemento");
 			lblComplemento.setBounds(30, 445, 281, 14);
 		}
 		return lblComplemento;
 	}
-	private JTextField getTextComplemento() {
+	public JTextField getTextComplemento() {
 		if (textComplemento == null) {
 			textComplemento = new JTextField();
 			textComplemento.setBounds(30, 470, 281, 20);
@@ -369,14 +359,14 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textComplemento;
 	}
-	private JLabel getLblCEP() {
+	public JLabel getLblCEP() {
 		if (lblCEP == null) {
 			lblCEP = new JLabel("CEP");
 			lblCEP.setBounds(30, 501, 281, 14);
 		}
 		return lblCEP;
 	}
-	private JTextField getTextCEP() {
+	public JTextField getTextCEP() {
 		if (textCEP == null) {
 			textCEP = new JTextField();
 			textCEP.setBounds(30, 517, 281, 20);
@@ -384,14 +374,14 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCEP;
 	}
-	private JLabel getLblDataNascimento() {
+	public JLabel getLblDataNascimento() {
 		if (lblDataNascimento == null) {
 			lblDataNascimento = new JLabel("Data Nascimento");
 			lblDataNascimento.setBounds(30, 548, 281, 14);
 		}
 		return lblDataNascimento;
 	}
-	private JTextField getTextDataNascimento() {
+	public JTextField getTextDataNascimento() {
 		if (textDataNascimento == null) {
 			textDataNascimento = new JTextField();
 			textDataNascimento.setBounds(30, 569, 281, 20);
@@ -399,14 +389,14 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textDataNascimento;
 	}
-	private JLabel getLblTelefone() {
+	public JLabel getLblTelefone() {
 		if (lblTelefone == null) {
 			lblTelefone = new JLabel("Telefone");
 			lblTelefone.setBounds(339, 70, 284, 14);
 		}
 		return lblTelefone;
 	}
-	private JTextField getTextTelefone() {
+	public JTextField getTextTelefone() {
 		if (textTelefone == null) {
 			textTelefone = new JTextField();
 			textTelefone.setBounds(339, 95, 284, 20);
@@ -414,11 +404,69 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textTelefone;
 	}
-	private JLabel getLblCelular() {
+	public JLabel getLblCelular() {
 		if (lblCelular == null) {
 			lblCelular = new JLabel("Celular");
 			lblCelular.setBounds(339, 126, 284, 14);
 		}
 		return lblCelular;
+	}
+	
+	public JTextField getTextCelular() {
+		if (textCelular == null) {
+			textCelular = new JTextField();
+			textCelular.setBounds(339, 152, 284, 20);
+			textCelular.setColumns(10);
+		}
+		return textCelular;
+	}
+	
+	public JLabel getLblSenha() {
+		if (lblSenha == null) {
+			lblSenha = new JLabel("Senha");
+			lblSenha.setBounds(339, 183, 284, 14);
+		}
+		return lblSenha;
+	}
+	
+	public JTextField getTextPassword1() {
+		if (textPassword1 == null) {
+			textPassword1 = new JPasswordField();
+			textPassword1.setBounds(339, 208, 284, 20);
+		}
+		return textPassword1;
+	}
+	
+	public JLabel getLblConfirmarSenha() {
+		if (lblConfirmarSenha == null) {
+			lblConfirmarSenha = new JLabel("Confirmar Senha");
+			lblConfirmarSenha.setBounds(339, 242, 284, 14);
+			
+		}
+		return lblConfirmarSenha;
+	}
+	
+	public JTextField getTextPassword2() {
+		if (textPassword2 == null) {
+			textPassword2 = new JPasswordField();
+			textPassword2.setBounds(339, 261, 284, 20);
+		}
+		return textPassword2;
+	}
+	
+	public JCheckBox getChckbxAdministrador() {
+		if (chckbxAdministrador == null) {
+			chckbxAdministrador = new JCheckBox("Administrador");
+			chckbxAdministrador.setBounds(30, 615, 147, 23);
+		}
+		return chckbxAdministrador;
+	}
+	
+	public JLabel getLblFoto() {
+		if (lblFoto == null) {
+			lblFoto = new JLabel("");
+			lblFoto.setBounds(0, 0, 275, 281);
+		}
+		return lblFoto;
 	}
 }
