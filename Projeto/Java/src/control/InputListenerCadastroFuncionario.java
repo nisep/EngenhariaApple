@@ -131,5 +131,8 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 		
 		
 	}
+	public JFileChooser getJFileChooser() {
+		return jFileChooser;
+	}
 	
 }
