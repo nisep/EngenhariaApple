@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import view.CadastroClienteView;
 
 public class InputListenerCadastroCliente implements MouseListener {
-	CadastroClienteView cadastroCliente;
+	private CadastroClienteView cadastroCliente;
 
 	public InputListenerCadastroCliente(CadastroClienteView cadastroCliente) {
 		// TODO Auto-generated constructor stub
