@@ -12,14 +12,12 @@ public class InputListenerCadastroCliente implements MouseListener {
 		// TODO Auto-generated constructor stub
 		this.cadastroCliente = cadastroCliente;
 	}
-	
-
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == cadastroCliente.getBtnCancelar()) {
 			cadastroCliente.dispose();
-		}else if ((e.getSource()) == cadastroCliente.getBtnGravar()) {
+		} else if ((e.getSource()) == cadastroCliente.getBtnGravar()) {
 			System.out.println("Botão ok Clicado");
 		}
 	}
@@ -44,7 +42,7 @@ public class InputListenerCadastroCliente implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+
 		// TODO Auto-generated method stub
 
 	}
