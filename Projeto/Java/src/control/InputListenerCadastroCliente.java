@@ -7,10 +7,7 @@ import view.CadastroClienteView;
 
 public class InputListenerCadastroCliente implements MouseListener {
 	private CadastroClienteView cadastroCliente;
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 	public InputListenerCadastroCliente(CadastroClienteView cadastroCliente) {
 		// TODO Auto-generated constructor stub
 		this.cadastroCliente = cadastroCliente;
