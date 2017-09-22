@@ -24,7 +24,6 @@ public class InputListenerFuncionarioView implements MouseListener {
 			System.out.println("Botão Novo Clicado");
 			cadastroFuncionarioView = new CadastroFuncionarioView();
 			cadastroFuncionarioView.setVisible(true);
-			funcionarioView.dispose();
 		}else if(e.getSource() == funcionarioView.getTableFuncionario()) {
 			System.err.println("Tabela clicada, linha: "+funcionarioView.getTableFuncionario().getSelectedRow());
 		}

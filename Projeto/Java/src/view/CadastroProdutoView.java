@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
 import control.InputListenerCadastroProduto;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
 
 public class CadastroProdutoView extends JDialog {
 
@@ -30,11 +32,11 @@ public class CadastroProdutoView extends JDialog {
 	private JLabel lblPrecoVenda;
 	private JTextField textPrecoVenda;
 	private JLabel lblDescricao;
-	private JTextField textDescricao;
 	private JLabel lblDataCadastro;
 	private JTextField txtDataDoCadastro;
 	private JButton btnCancelar;
 	private JButton btnGravar;
+	private JTextArea textDescricao;
 	
 
 	public static void main(String[] args) {
@@ -91,7 +93,6 @@ public class CadastroProdutoView extends JDialog {
 			contentPanel.add(getLblPrecoVenda());
 			contentPanel.add(getTextPrecoVenda());
 			contentPanel.add(getLblDescricao());
-			contentPanel.add(getTextDescricao());
 			contentPanel.add(getTextDataCadastro());
 			contentPanel.add(getLblDataCadastro());
 			contentPanel.add(getbtnPesquisarImagem());
@@ -99,6 +100,7 @@ public class CadastroProdutoView extends JDialog {
 			contentPanel.add(getpanelFoto());
 			contentPanel.add(getBtnCancelar());
 			contentPanel.add(getBtnGravar());
+			contentPanel.add(getTextDescricao());
 
 				
 			
@@ -158,7 +160,7 @@ public class CadastroProdutoView extends JDialog {
 		return lblCodigo;
 	}
 
-	private JLabel getLblNome() {
+	public JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome");
 			lblNome.setBounds(30, 70, 46, 14);
@@ -166,7 +168,7 @@ public class CadastroProdutoView extends JDialog {
 		return lblNome;
 	}
 
-	private JLabel getLblPrecoCompra() {
+	public JLabel getLblPrecoCompra() {
 		if (lblPrecoCompra == null) {
 			lblPrecoCompra = new JLabel("Pre\u00E7o Compra (R$)");
 			lblPrecoCompra.setBounds(30, 126, 221, 14);
@@ -174,7 +176,7 @@ public class CadastroProdutoView extends JDialog {
 		return lblPrecoCompra;
 	}
 
-	private JTextField getTextPrecoCompra() {
+	public JTextField getTextPrecoCompra() {
 		if (textPrecoCompra == null) {
 			textPrecoCompra = new JTextField();
 			textPrecoCompra.setBounds(30, 151, 281, 20);
@@ -183,7 +185,7 @@ public class CadastroProdutoView extends JDialog {
 		return textPrecoCompra;
 	}
 
-	private JLabel getLblPrecoVenda() {
+	public JLabel getLblPrecoVenda() {
 		if (lblPrecoVenda == null) {
 			lblPrecoVenda = new JLabel("Pre\u00E7o Venda (R$)");
 			lblPrecoVenda.setBounds(30, 182, 167, 14);
@@ -191,7 +193,7 @@ public class CadastroProdutoView extends JDialog {
 		return lblPrecoVenda;
 	}
 
-	private JTextField getTextPrecoVenda() {
+	public JTextField getTextPrecoVenda() {
 		if (textPrecoVenda == null) {
 			textPrecoVenda = new JTextField();
 			textPrecoVenda.setBounds(30, 207, 281, 20);
@@ -200,21 +202,12 @@ public class CadastroProdutoView extends JDialog {
 		return textPrecoVenda;
 	}
 
-	private JLabel getLblDescricao() {
+	public JLabel getLblDescricao() {
 		if (lblDescricao == null) {
 			lblDescricao = new JLabel("Descri\u00E7\u00E3o");
 			lblDescricao.setBounds(30, 238, 69, 14);
 		}
 		return lblDescricao;
-	}
-
-	private JTextField getTextDescricao() {
-		if (textDescricao == null) {
-			textDescricao = new JTextField();
-			textDescricao.setBounds(30, 263, 281, 154);
-			textDescricao.setColumns(10);
-		}
-		return textDescricao;
 	}
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
@@ -229,5 +222,14 @@ public class CadastroProdutoView extends JDialog {
 			btnGravar.setBounds(435, 427, 89, 23);
 		}
 		return btnGravar;
+	}
+	
+	public JTextArea getTextDescricao() {
+		if (textDescricao == null) {
+			textDescricao = new JTextArea();
+			textDescricao.setBorder(UIManager.getBorder("TextField.border"));
+			textDescricao.setBounds(30, 263, 281, 154);
+		}
+		return textDescricao;
 	}
 }

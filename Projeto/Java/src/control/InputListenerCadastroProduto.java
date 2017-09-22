@@ -3,11 +3,12 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import model.Produto;
 import view.CadastroProdutoView;
 
 public class InputListenerCadastroProduto implements MouseListener{
-	CadastroProdutoView cadastroProduto;
-	
+	private CadastroProdutoView cadastroProduto;
+	private Produto produto;
 	public InputListenerCadastroProduto(CadastroProdutoView cadastroProduto) {
 		// TODO Auto-generated constructor stub
 		this.cadastroProduto = cadastroProduto;
@@ -21,6 +22,7 @@ public class InputListenerCadastroProduto implements MouseListener{
 			cadastroProduto.dispose();
 		}else if ((e.getSource()) == cadastroProduto.getBtnGravar()) {
 			System.out.println("Botão ok Clicado");
+			capturaDados();
 		}
 	}
 
@@ -43,9 +45,23 @@ public class InputListenerCadastroProduto implements MouseListener{
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		
+	public void mouseReleased(MouseEvent e) {	
 		// TODO Auto-generated method stub
-
+	}
+	
+	public void capturaDados() {
+		if(!(cadastroProduto.getTextCodigo().equals("") || cadastroProduto.getTextNome().equals("")
+				|| cadastroProduto.getTextPrecoCompra().equals("") || cadastroProduto.getTextPrecoVenda().equals("")
+				|| cadastroProduto.getTextDescricao().equals("") || cadastroProduto.getTextDataCadastro().equals("")
+				)) {
+			
+		}
+	}
+	
+	public Produto getProduto() {
+		if(produto == null) {
+			produto = new Produto();
+		}
+		return produto;
 	}
 }

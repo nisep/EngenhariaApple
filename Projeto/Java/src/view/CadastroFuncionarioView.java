@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -88,6 +89,7 @@ public class CadastroFuncionarioView extends JDialog {
 		setBounds(100, 100, 649, 700);
 		setContentPane(getContentPanel());
 		setLocationRelativeTo(null);
+		setResizable(false);
 
 	}
 
@@ -466,6 +468,7 @@ public class CadastroFuncionarioView extends JDialog {
 		if (lblFoto == null) {
 			lblFoto = new JLabel("");
 			lblFoto.setBounds(0, 0, 275, 281);
+			lblFoto.setIcon(new ImageIcon("Interno/default-avatar.png"));
 		}
 		return lblFoto;
 	}
