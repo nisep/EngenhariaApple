@@ -137,7 +137,8 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 				}else {
 					int result = JOptionPane.showConfirmDialog(null, "Deseja Realizar o Cadastro sem Imagem?","Cadastrar", JOptionPane.YES_NO_OPTION);
 					if(result==JOptionPane.YES_OPTION) {
-						funcDAO.gravarFuncionario(func);
+						//funcDAO.gravarFuncionario(func);
+						System.out.println(func.getNome());
 					} 
 				}
 			}else {
