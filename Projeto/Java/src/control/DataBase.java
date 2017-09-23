@@ -4,10 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class DataBase {
-
 	private Connection Con;
+	String driverName = "com.mysql.jdbc.Driver";                        
+	String user = "root";
+	String senha = "12345";
+	String serverName = "localhost";
+	String mydatabase ="apple";
+	String url = "jdbc:mysql://" + serverName + "/" + mydatabase+"?autoReconnect=true&useSSL=false";
+	
 
 	public DataBase() {
 		this.Con = null;
@@ -15,8 +20,8 @@ public class DataBase {
 
 	public Connection Conectar() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Con = DriverManager.getConnection("jdbc:mysql://localhost/apple", "root", "12345");
+			Class.forName(driverName);
+			Con = DriverManager.getConnection(url, user, senha);
 		} catch (java.lang.Exception ex) {
 			ex.printStackTrace();
 		}

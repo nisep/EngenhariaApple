@@ -15,12 +15,11 @@ public class FuncionarioDAO {
 		try {
 			Statement stmt = conex.createStatement();
 			stmt.execute(
-					"INSERT INTO funcionario(nomeFunc, fotoFunc, salarioFunc, comissaoFunc, cpfFunc, ruaFunc, compFunc, numeroFunc, bairroFunc, cidadeFunc, "
-					+ "dataNascFunc, telefoneFunc, celularFunc, dataAdmissaoFunc, cepFunc, senhaFunc)VALUES ('"
-							+ f.getNome() + "','" + f.getFoto() + "','" + f.getSalario() + "','" + f.getComissao() + "','"
-							+ f.getCpf() + "','" + f.getRua() + "','" + f.getComplemento() + "','"
-							+ f.getNumero() + "','" + f.getBairro() + "','" + f.getCidade() +  "','" + f.getBairro() +  "','" + 
-							f.getDataNascimento() +  "','" + f.getTelefone() +  "','" + f.getCelular() +  "','" +f.getDataAdmissao()+  "','" +f.getCep()+ "','" +f.getSenha()+"') ");
+					"INSERT INTO funcionario(nomeFunc, ruaFunc, compFunc, numeroFunc, bairroFunc, cidadeFunc, dataNascFunc, dataAdmissaoFunc, cepFunc, senhaFunc, fotoFunc, telefoneFunc, celularFunc, cpfFunc, salarioFunc, comissaoFunc)VALUES ('"
+							+f.getNome() + "','" + f.getRua() + "','" + f.getComplemento() + "','"
+									+ f.getNumero() + "','" + f.getBairro() + "','" + f.getCidade() + "','"  + f.getDataNascimento() +"','"+ f.getDataAdmissao()+  "','" +f.getCep()+ "','" +f.getSenha()+"','" + f.getFoto() +"','" + f.getTelefone() +  "','" + f.getCelular() 
+									+ "','"	+ f.getCpf()+ "','" + f.getSalario() + "','" + f.getComissao() +"') ");
+			System.out.println("deu bom");
 			return true;
 		} catch (SQLException sqle) {
 			System.out.println("Erro ao inserir..." + sqle.getMessage());
@@ -31,3 +30,10 @@ public class FuncionarioDAO {
 
 	}
 }
+/*
+ * " salarioFunc, comissaoFunc, cpfFunc,
+					+ "dataNascFunc, , dataAdmissaoFunc, cepFunc, senhaFunc)VALUES ('"
+							"','" + f.getSalario() + "','" + f.getComissao() + "','"
+							+ f.getCpf() + "','" + "
+					
+			*/

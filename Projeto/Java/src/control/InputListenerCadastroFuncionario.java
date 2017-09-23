@@ -17,7 +17,9 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 	private JFileChooser jFileChooser;
 	private ImageIcon imageIcon;
 	private Funcionario func;
-	private FuncionarioDAO funcDAO;
+	private FuncionarioDAO funcDAO = new FuncionarioDAO();
+	
+
 	
 	public InputListenerCadastroFuncionario(CadastroFuncionarioView cadastroFuncionario) {
 		// TODO Auto-generated constructor stub
@@ -137,8 +139,8 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 				}else {
 					int result = JOptionPane.showConfirmDialog(null, "Deseja Realizar o Cadastro sem Imagem?","Cadastrar", JOptionPane.YES_NO_OPTION);
 					if(result==JOptionPane.YES_OPTION) {
-						//funcDAO.gravarFuncionario(func);
-						System.out.println(func.getNome());
+						funcDAO.gravarFuncionario(func);
+						//System.out.println(func.get);
 					} 
 				}
 			}else {
