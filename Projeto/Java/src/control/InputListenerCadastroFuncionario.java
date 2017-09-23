@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import model.Funcionario;
+import model.FuncionarioDAO;
 import view.CadastroFuncionarioView;
 
 public class InputListenerCadastroFuncionario implements MouseListener {
@@ -16,6 +17,7 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 	private JFileChooser jFileChooser;
 	private ImageIcon imageIcon;
 	private Funcionario func;
+	private FuncionarioDAO funcDAO;
 	
 	public InputListenerCadastroFuncionario(CadastroFuncionarioView cadastroFuncionario) {
 		// TODO Auto-generated constructor stub
@@ -130,12 +132,12 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 		
 					getFunc().setSenha(cadastroFuncionario.getTextPassword1().getText());
 					
-					//TODO: Chamar DAO para cadastrar
+					funcDAO.gravarFuncionario(func);
 					
 				}else {
 					int result = JOptionPane.showConfirmDialog(null, "Deseja Realizar o Cadastro sem Imagem?","Cadastrar", JOptionPane.YES_NO_OPTION);
 					if(result==JOptionPane.YES_OPTION) {
-						//TODO: Chamar DAO para cadastrar
+						funcDAO.gravarFuncionario(func);
 					} 
 				}
 			}else {
