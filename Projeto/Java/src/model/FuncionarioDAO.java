@@ -30,10 +30,3 @@ public class FuncionarioDAO {
 
 	}
 }
-/*
- * " salarioFunc, comissaoFunc, cpfFunc,
-					+ "dataNascFunc, , dataAdmissaoFunc, cepFunc, senhaFunc)VALUES ('"
-							"','" + f.getSalario() + "','" + f.getComissao() + "','"
-							+ f.getCpf() + "','" + "
-					
-			*/
