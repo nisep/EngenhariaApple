@@ -110,10 +110,10 @@ CREATE TABLE `funcionario` (
   `numeroFunc` varchar(10) DEFAULT NULL,
   `bairroFunc` varchar(45) DEFAULT NULL,
   `cidadeFunc` varchar(45) DEFAULT NULL,
-  `dataNascFunc` varchar(20) DEFAULT NULL,
+  `dataNascFunc` date DEFAULT NULL,
   `telefoneFunc` varchar(20) DEFAULT NULL,
   `celularFunc` varchar(20) DEFAULT NULL,
-  `dataAdmissaoFunc` varchar(20) DEFAULT NULL,
+  `dataAdmissaoFunc` date DEFAULT NULL,
   `cepFunc` bigint(20) unsigned DEFAULT NULL,
   `senhaFunc` varchar(20) DEFAULT NULL,
   `administrador` tinyint(1) DEFAULT NULL,
@@ -123,8 +123,6 @@ CREATE TABLE `funcionario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `funcionario` */
-
-insert  into `funcionario`(`idFuncionario`,`nomeFunc`,`fotoFunc`,`salarioFunc`,`comissaoFunc`,`cpfFunc`,`ruaFunc`,`compFunc`,`numeroFunc`,`bairroFunc`,`cidadeFunc`,`dataNascFunc`,`telefoneFunc`,`celularFunc`,`dataAdmissaoFunc`,`cepFunc`,`senhaFunc`,`administrador`) values (6,'1','C:UsersCarlosDesktop\01.jpg',NULL,NULL,NULL,'1','1','1','1','1','1','1','1','1',1,'1',NULL),(7,'1','C:UsersCarlosDesktop\01.jpg',NULL,NULL,1,'1','1','1','1','1','1','1','1','1',1,'1',NULL),(9,'1','C:UsersCarlosDesktop\01.jpg',1,1,3,'1','1','1','1','1','1','1','1','1',1,'1',NULL);
 
 /*Table structure for table `gerente` */
 
