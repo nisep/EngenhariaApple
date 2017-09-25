@@ -1,4 +1,7 @@
 package model;
+
+import java.sql.Date;
+
 public class Funcionario {
 	
 	private int idFuncionario;
@@ -13,10 +16,10 @@ public class Funcionario {
 	private String bairro;
 	private String cidade;
 	private String cep;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private long telefone;
 	private long celular;
-	private String dataAdmissao;
+	private Date dataAdmissao;
 	private String senha;
 	private boolean administrador;
 	
@@ -105,12 +108,7 @@ public class Funcionario {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
+	
 	public long getTelefone() {
 		return telefone;
 	}
@@ -123,12 +121,19 @@ public class Funcionario {
 	public void setCelular(long celular) {
 		this.celular = celular;
 	}
-	public String getDataAdmissao() {
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public Date getDataAdmissao() {
 		return dataAdmissao;
 	}
-	public void setDataAdmissao(String dataAdmissao) {
+	public void setDataAdmissao(Date dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
+	
 	
 	
 }

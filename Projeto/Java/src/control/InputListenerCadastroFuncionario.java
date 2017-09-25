@@ -3,6 +3,7 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -122,8 +123,10 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 					
 					getFunc().setCep(cadastroFuncionario.getTextCEP().getText());
 					System.out.println(getFunc().getCep());
-					
-					getFunc().setDataAdmissao(cadastroFuncionario.getTextDataCadastro().getText());
+					//TODO: resolver
+					SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+					formato.parse(cadastroFuncionario.getTextDataCadastro().getText());
+					getFunc().setDataAdmissao((Date) formato);
 					System.out.println(getFunc().getDataAdmissao());
 					
 					getFunc().setDataNascimento(cadastroFuncionario.getTextDataNascimento().getText());
