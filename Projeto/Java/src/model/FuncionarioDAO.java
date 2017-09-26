@@ -27,9 +27,8 @@ public class FuncionarioDAO {
 							+ "','" + f.getTelefone() + "','" + f.getCelular() + "','" + f.getCpf() + "','"
 							+ f.getSalario() + "','" + f.getComissao() + "') ");
 			
-			int codigo = buscaCodigoFuncionario(f.getCpf());
-			CopiarImagemFuncionario(codigo,f.getFoto());
-			System.out.println("deu bom");
+			//int codigo = buscaCodigoFuncionario(f.getCpf());
+			//CopiarImagemFuncionario(codigo,f.getFoto());
 			return true;
 		} catch (SQLException sqle) {
 			System.out.println("Erro ao inserir..." + sqle.getMessage());
