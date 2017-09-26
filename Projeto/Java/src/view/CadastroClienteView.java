@@ -14,7 +14,6 @@ import control.InputListenerCadastroCliente;
 
 public class CadastroClienteView extends JDialog {
 
-	
 	private static final long serialVersionUID = -6915111385220052899L;
 	InputListenerCadastroCliente listener;
 	private JPanel contentPanel;
@@ -45,6 +44,7 @@ public class CadastroClienteView extends JDialog {
 	private JLabel lblCelular;
 	private JTextField textCelular;
 	private JLabel lblFoto;
+	
 
 	public static void main(String[] args) {
 		try {
@@ -62,7 +62,7 @@ public class CadastroClienteView extends JDialog {
 		initializeListeners();
 
 	}
-	
+
 	public void initializeListeners() {
 		getBtnGravar().addMouseListener(listener);
 		getBtnCancelar().addMouseListener(listener);
@@ -85,7 +85,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return btnPesquisarImagem;
 	}
-	
+
 	public JPanel getpanelFoto() {
 		if (panelFoto == null) {
 			panelFoto = new JPanel();
@@ -131,13 +131,11 @@ public class CadastroClienteView extends JDialog {
 			contentPanel.add(getTextCelular());
 			contentPanel.add(getLblFoto());
 			contentPanel.add(getpanelFoto());
-			
-			
+
 		}
 		return contentPanel;
 	}
 
-	
 	public JTextField getTextNome() {
 		if (textNome == null) {
 			textNome = new JTextField();
@@ -146,8 +144,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textNome;
 	}
-	
-	
+
 	public JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome");
@@ -155,7 +152,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblNome;
 	}
-	
+
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
@@ -163,6 +160,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return btnCancelar;
 	}
+
 	public JButton getBtnGravar() {
 		if (btnGravar == null) {
 			btnGravar = new JButton("Gravar");
@@ -170,7 +168,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return btnGravar;
 	}
-	
+
 	public JLabel getLblCPF() {
 		if (lblCPF == null) {
 			lblCPF = new JLabel("CPF");
@@ -178,6 +176,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblCPF;
 	}
+
 	public JTextField getTextCPF() {
 		if (textCPF == null) {
 			textCPF = new JTextField();
@@ -186,9 +185,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textCPF;
 	}
-	
-	
-	
+
 	public JLabel getLblRua() {
 		if (lblRua == null) {
 			lblRua = new JLabel("Rua");
@@ -196,6 +193,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblRua;
 	}
+
 	public JTextField getTextRua() {
 		if (textRua == null) {
 			textRua = new JTextField();
@@ -204,6 +202,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textRua;
 	}
+
 	public JTextField getTextBairro() {
 		if (textBairro == null) {
 			textBairro = new JTextField();
@@ -212,6 +211,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textBairro;
 	}
+
 	public JTextField getTextCidade() {
 		if (textCidade == null) {
 			textCidade = new JTextField();
@@ -220,6 +220,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textCidade;
 	}
+
 	public JLabel getLblBairro() {
 		if (lblBairro == null) {
 			lblBairro = new JLabel("Bairro");
@@ -227,8 +228,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblBairro;
 	}
-	
-	
+
 	public JLabel getLblCidade() {
 		if (lblCidade == null) {
 			lblCidade = new JLabel("Cidade");
@@ -236,6 +236,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblCidade;
 	}
+
 	public JLabel getLblNumero() {
 		if (lblNumero == null) {
 			lblNumero = new JLabel("Numero");
@@ -243,6 +244,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblNumero;
 	}
+
 	public JTextField getTextNumero() {
 		if (textNumero == null) {
 			textNumero = new JTextField();
@@ -251,6 +253,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textNumero;
 	}
+
 	public JLabel getLblComplemento() {
 		if (lblComplemento == null) {
 			lblComplemento = new JLabel("Complemento");
@@ -258,6 +261,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblComplemento;
 	}
+
 	public JTextField getTextComplemento() {
 		if (textComplemento == null) {
 			textComplemento = new JTextField();
@@ -266,6 +270,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textComplemento;
 	}
+
 	public JLabel getLblCEP() {
 		if (lblCEP == null) {
 			lblCEP = new JLabel("CEP");
@@ -273,6 +278,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblCEP;
 	}
+
 	public JTextField getTextCEP() {
 		if (textCEP == null) {
 			textCEP = new JTextField();
@@ -281,6 +287,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textCEP;
 	}
+
 	public JLabel getLblDataNascimento() {
 		if (lblDataNascimento == null) {
 			lblDataNascimento = new JLabel("Data Nascimento");
@@ -288,6 +295,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblDataNascimento;
 	}
+
 	public JTextField getTextDataNascimento() {
 		if (textDataNascimento == null) {
 			textDataNascimento = new JTextField();
@@ -296,6 +304,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textDataNascimento;
 	}
+
 	public JLabel getLblTelefone() {
 		if (lblTelefone == null) {
 			lblTelefone = new JLabel("Telefone");
@@ -303,6 +312,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblTelefone;
 	}
+
 	public JTextField getTextTelefone() {
 		if (textTelefone == null) {
 			textTelefone = new JTextField();
@@ -311,6 +321,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textTelefone;
 	}
+
 	public JLabel getLblCelular() {
 		if (lblCelular == null) {
 			lblCelular = new JLabel("Celular");
@@ -318,7 +329,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblCelular;
 	}
-	
+
 	public JTextField getTextCelular() {
 		if (textCelular == null) {
 			textCelular = new JTextField();
@@ -327,7 +338,7 @@ public class CadastroClienteView extends JDialog {
 		}
 		return textCelular;
 	}
-	
+
 	public JLabel getLblFoto() {
 		if (lblFoto == null) {
 			lblFoto = new JLabel("");
@@ -336,4 +347,6 @@ public class CadastroClienteView extends JDialog {
 		}
 		return lblFoto;
 	}
+
+
 }

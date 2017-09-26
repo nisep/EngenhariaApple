@@ -168,6 +168,7 @@ public class EditarFuncionarioView extends JDialog {
 		if (textCodigo == null) {
 			textCodigo = new JTextField();
 			textCodigo.setBounds(30, 37, 281, 22);
+			textCodigo.setEditable(false);
 		}
 		return textCodigo;
 	}
@@ -218,6 +219,7 @@ public class EditarFuncionarioView extends JDialog {
 			txtDataDoCadastro = new JTextField();
 			txtDataDoCadastro.setBounds(339, 38, 284, 20);
 			txtDataDoCadastro.setColumns(10);
+			txtDataDoCadastro.setEditable(false);
 		}
 		return txtDataDoCadastro;
 	}
