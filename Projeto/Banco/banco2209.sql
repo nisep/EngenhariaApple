@@ -120,9 +120,11 @@ CREATE TABLE `funcionario` (
   PRIMARY KEY (`idFuncionario`),
   UNIQUE KEY `idFuncionario_UNIQUE` (`idFuncionario`),
   UNIQUE KEY `cpfFunc_UNIQUE` (`cpfFunc`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `funcionario` */
+
+insert  into `funcionario`(`idFuncionario`,`nomeFunc`,`fotoFunc`,`salarioFunc`,`comissaoFunc`,`cpfFunc`,`ruaFunc`,`compFunc`,`numeroFunc`,`bairroFunc`,`cidadeFunc`,`dataNascFunc`,`telefoneFunc`,`celularFunc`,`dataAdmissaoFunc`,`cepFunc`,`senhaFunc`,`administrador`) values (10,'1','C:UsersCarlosDesktop\01.jpg',1,1,1,'1','1','1','1','1','2017-09-25','1','1','2017-09-25',1,'1',NULL),(12,'1','C:UsersCarlosDesktop\01.jpg',1,1,2,'1','1','1','1','1','2017-09-25','1','1','2017-09-25',1,'1',NULL);
 
 /*Table structure for table `gerente` */
 
