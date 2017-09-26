@@ -8,7 +8,7 @@ import java.sql.Statement;
 import control.DataBase;
 
 public class FuncionarioDAO {
-	DataBase bd = new DataBase();
+	DataBase bd = DataBase.getInstance();
 	Connection conex = bd.Conectar();
 
 	public boolean gravarFuncionario(Funcionario f) {
@@ -36,17 +36,6 @@ public class FuncionarioDAO {
 	public boolean verificaCPF(long CPF) {
 		conex = bd.Conectar();
 		try {
-<<<<<<< HEAD
-			Statement stmt = conex.createStatement();
-			stmt.execute("select * from funcionario where ");
-			return true;
-		}catch(SQLException sqle) {
-			System.out.println(sqle.getMessage());
-			return false;
-		}finally {
-			bd.Desconectar(conex);
-		}
-=======
 			Statement stmt = (Statement) conex.createStatement();
 			String SQL = "SELECT * FROM veiculo";
 			ResultSet rs = stmt.executeQuery(SQL);
@@ -65,7 +54,5 @@ public class FuncionarioDAO {
 			bd.Desconectar(conex);
 		}
 		return false;
-
->>>>>>> 2c90b2534c92fd3917afc995cf70aad5429b8d0e
 	}
 }
