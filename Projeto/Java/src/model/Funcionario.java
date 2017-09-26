@@ -130,8 +130,8 @@ public class Funcionario {
 	public Date getDataAdmissao() {
 		return dataAdmissao;
 	}
-	public void setDataAdmissao(Date dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
+	public void setDataAdmissao() {
+		this.dataAdmissao = new Date(System.currentTimeMillis());
 	}
 	
 	

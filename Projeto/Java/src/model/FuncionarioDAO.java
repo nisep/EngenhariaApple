@@ -29,4 +29,14 @@ public class FuncionarioDAO {
 		}
 
 	}
+	
+	
+	public boolean verificaCPF(long CPF) {
+		conex = bd.Conectar();
+		try {
+			Statement stmt = conex.createStatement();
+			stmt.execute("select * from funcionario where ");
+			
+			return true;
+	}
 }

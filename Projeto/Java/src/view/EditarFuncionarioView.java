@@ -12,18 +12,21 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
-import control.InputListenerCadastroFuncionario;
+import control.InputListenerEditarFuncionario;
 
-public class CadastroFuncionarioView extends JDialog {
-
-	
-	private static final long serialVersionUID = -6915111385220052899L;
-	InputListenerCadastroFuncionario listener;
+public class EditarFuncionarioView extends JDialog {
+/*
+	private static final long serialVersionUID = -799512330089900923L;
+	InputListenerEditarFuncionario listener;
 	private JPanel contentPanel;
 	private JPanel panelFoto;
+	private JTextField textCodigo;
+	private JLabel lblCodigo;
 	private JButton btnPesquisarImagem;
 	private JLabel lblNome;
 	private JTextField textNome;
+	private JLabel lblDataCadastro;
+	private JTextField txtDataDoCadastro;
 	private JButton btnCancelar;
 	private JButton btnGravar;
 	private JTextField textSalario;
@@ -59,7 +62,7 @@ public class CadastroFuncionarioView extends JDialog {
 
 	public static void main(String[] args) {
 		try {
-			CadastroFuncionarioView dialog = new CadastroFuncionarioView();
+			EditarFuncionarioView dialog = new EditarFuncionarioView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -67,13 +70,13 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 	}
 
-	public CadastroFuncionarioView() {
-		listener = new InputListenerCadastroFuncionario(this);
+	public EditarFuncionarioView() {
+		listener = new InputListenerEditarFuncionario(this);
 		initialize();
 		initializeListeners();
 
 	}
-	
+
 	public void initializeListeners() {
 		getBtnGravar().addMouseListener(listener);
 		getBtnCancelar().addMouseListener(listener);
@@ -96,7 +99,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return btnPesquisarImagem;
 	}
-	
+
 	public JPanel getpanelFoto() {
 		if (panelFoto == null) {
 			panelFoto = new JPanel();
@@ -115,8 +118,12 @@ public class CadastroFuncionarioView extends JDialog {
 			contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
 			contentPanel.setLayout(null);
+			contentPanel.add(getTextCodigo());
+			contentPanel.add(getLblCodigo());
 			contentPanel.add(getLblNome());
 			contentPanel.add(getTextNome());
+			contentPanel.add(getTextDataCadastro());
+			contentPanel.add(getLblDataCadastro());
 			contentPanel.add(getbtnPesquisarImagem());
 
 			contentPanel.add(getpanelFoto());
@@ -150,16 +157,21 @@ public class CadastroFuncionarioView extends JDialog {
 			contentPanel.add(getTextPassword1());
 			contentPanel.add(getLblConfirmarSenha());
 			contentPanel.add(getTextPassword2());
-			
-			
+
 			contentPanel.add(getChckbxAdministrador());
-			
-			
+
 		}
 		return contentPanel;
 	}
 
-	
+	public JTextField getTextCodigo() {
+		if (textCodigo == null) {
+			textCodigo = new JTextField();
+			textCodigo.setBounds(30, 37, 281, 22);
+		}
+		return textCodigo;
+	}
+
 	public JTextField getTextNome() {
 		if (textNome == null) {
 			textNome = new JTextField();
@@ -168,8 +180,15 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textNome;
 	}
-	
-	
+
+	public JLabel getLblCodigo() {
+		if (lblCodigo == null) {
+			lblCodigo = new JLabel("Código");
+			lblCodigo.setBounds(30, 12, 277, 14);
+		}
+		return lblCodigo;
+	}
+
 	public JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome");
@@ -177,7 +196,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblNome;
 	}
-	
+
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
@@ -185,6 +204,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return btnCancelar;
 	}
+
 	public JButton getBtnGravar() {
 		if (btnGravar == null) {
 			btnGravar = new JButton("Gravar");
@@ -192,7 +212,24 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return btnGravar;
 	}
-	
+
+	public JTextField getTextDataCadastro() {
+		if (txtDataDoCadastro == null) {
+			txtDataDoCadastro = new JTextField();
+			txtDataDoCadastro.setBounds(339, 38, 284, 20);
+			txtDataDoCadastro.setColumns(10);
+		}
+		return txtDataDoCadastro;
+	}
+
+	public JLabel getLblDataCadastro() {
+		if (lblDataCadastro == null) {
+			lblDataCadastro = new JLabel("Data do Cadastro");
+			lblDataCadastro.setBounds(339, 12, 120, 14);
+		}
+		return lblDataCadastro;
+	}
+
 	public JTextField getTextSalario() {
 		if (textSalario == null) {
 			textSalario = new JTextField();
@@ -201,6 +238,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textSalario;
 	}
+
 	public JLabel getLblSalario() {
 		if (lblSalario == null) {
 			lblSalario = new JLabel("Sal\u00E1rio (R$)");
@@ -208,8 +246,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblSalario;
 	}
-	
-	
+
 	public JLabel getLblComissao() {
 		if (lblComissao == null) {
 			lblComissao = new JLabel("Comiss\u00E3o (%)");
@@ -217,6 +254,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblComissao;
 	}
+
 	public JTextField getTextComissao() {
 		if (textComissao == null) {
 			textComissao = new JTextField();
@@ -225,7 +263,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textComissao;
 	}
-	
+
 	public JLabel getLblCPF() {
 		if (lblCPF == null) {
 			lblCPF = new JLabel("CPF");
@@ -233,6 +271,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblCPF;
 	}
+
 	public JTextField getTextCPF() {
 		if (textCPF == null) {
 			textCPF = new JTextField();
@@ -241,9 +280,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCPF;
 	}
-	
-	
-	
+
 	public JLabel getLblRua() {
 		if (lblRua == null) {
 			lblRua = new JLabel("Rua");
@@ -251,6 +288,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblRua;
 	}
+
 	public JTextField getTextRua() {
 		if (textRua == null) {
 			textRua = new JTextField();
@@ -259,6 +297,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textRua;
 	}
+
 	public JTextField getTextBairro() {
 		if (textBairro == null) {
 			textBairro = new JTextField();
@@ -267,6 +306,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textBairro;
 	}
+
 	public JTextField getTextCidade() {
 		if (textCidade == null) {
 			textCidade = new JTextField();
@@ -275,6 +315,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCidade;
 	}
+
 	public JLabel getLblBairro() {
 		if (lblBairro == null) {
 			lblBairro = new JLabel("Bairro");
@@ -282,8 +323,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblBairro;
 	}
-	
-	
+
 	public JLabel getLblCidade() {
 		if (lblCidade == null) {
 			lblCidade = new JLabel("Cidade");
@@ -291,6 +331,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblCidade;
 	}
+
 	public JLabel getLblNumero() {
 		if (lblNumero == null) {
 			lblNumero = new JLabel("Numero");
@@ -298,6 +339,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblNumero;
 	}
+
 	public JTextField getTextNumero() {
 		if (textNumero == null) {
 			textNumero = new JTextField();
@@ -306,6 +348,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textNumero;
 	}
+
 	public JLabel getLblComplemento() {
 		if (lblComplemento == null) {
 			lblComplemento = new JLabel("Complemento");
@@ -313,6 +356,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblComplemento;
 	}
+
 	public JTextField getTextComplemento() {
 		if (textComplemento == null) {
 			textComplemento = new JTextField();
@@ -321,6 +365,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textComplemento;
 	}
+
 	public JLabel getLblCEP() {
 		if (lblCEP == null) {
 			lblCEP = new JLabel("CEP");
@@ -328,6 +373,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblCEP;
 	}
+
 	public JTextField getTextCEP() {
 		if (textCEP == null) {
 			textCEP = new JTextField();
@@ -336,6 +382,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCEP;
 	}
+
 	public JLabel getLblDataNascimento() {
 		if (lblDataNascimento == null) {
 			lblDataNascimento = new JLabel("Data Nascimento");
@@ -343,6 +390,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblDataNascimento;
 	}
+
 	public JTextField getTextDataNascimento() {
 		if (textDataNascimento == null) {
 			textDataNascimento = new JTextField();
@@ -351,6 +399,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textDataNascimento;
 	}
+
 	public JLabel getLblTelefone() {
 		if (lblTelefone == null) {
 			lblTelefone = new JLabel("Telefone");
@@ -358,6 +407,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblTelefone;
 	}
+
 	public JTextField getTextTelefone() {
 		if (textTelefone == null) {
 			textTelefone = new JTextField();
@@ -366,6 +416,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textTelefone;
 	}
+
 	public JLabel getLblCelular() {
 		if (lblCelular == null) {
 			lblCelular = new JLabel("Celular");
@@ -373,7 +424,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblCelular;
 	}
-	
+
 	public JTextField getTextCelular() {
 		if (textCelular == null) {
 			textCelular = new JTextField();
@@ -382,7 +433,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textCelular;
 	}
-	
+
 	public JLabel getLblSenha() {
 		if (lblSenha == null) {
 			lblSenha = new JLabel("Senha");
@@ -390,7 +441,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblSenha;
 	}
-	
+
 	public JTextField getTextPassword1() {
 		if (textPassword1 == null) {
 			textPassword1 = new JPasswordField();
@@ -398,16 +449,16 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textPassword1;
 	}
-	
+
 	public JLabel getLblConfirmarSenha() {
 		if (lblConfirmarSenha == null) {
 			lblConfirmarSenha = new JLabel("Confirmar Senha");
 			lblConfirmarSenha.setBounds(339, 242, 284, 14);
-			
+
 		}
 		return lblConfirmarSenha;
 	}
-	
+
 	public JTextField getTextPassword2() {
 		if (textPassword2 == null) {
 			textPassword2 = new JPasswordField();
@@ -415,7 +466,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return textPassword2;
 	}
-	
+
 	public JCheckBox getChckbxAdministrador() {
 		if (chckbxAdministrador == null) {
 			chckbxAdministrador = new JCheckBox("Administrador");
@@ -423,7 +474,7 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return chckbxAdministrador;
 	}
-	
+
 	public JLabel getLblFoto() {
 		if (lblFoto == null) {
 			lblFoto = new JLabel("");
@@ -432,4 +483,5 @@ public class CadastroFuncionarioView extends JDialog {
 		}
 		return lblFoto;
 	}
+	*/
 }
