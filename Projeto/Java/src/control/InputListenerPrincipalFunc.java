@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 
 import view.ClienteView;
+import view.NotaEntradaView;
 import view.PedidoView;
 import view.PrincipalFunc;
 
@@ -76,6 +77,7 @@ public class InputListenerPrincipalFunc implements MouseListener {
 			new PedidoView().setVisible(true);
 		}else if(e.getSource() == principalFunc.getBtNotaEntrada()) {
 			principalFunc.getBtNotaEntrada().setIcon(new ImageIcon("Interno/nota.png"));
+			new NotaEntradaView().setVisible(true);
 			//TODO implementar View NotaDeEntrada
 		}else if(e.getSource() == principalFunc.getBtSair()) {
 			principalFunc.getBtSair().setIcon(new ImageIcon("Interno/sair.png"));

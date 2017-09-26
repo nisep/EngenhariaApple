@@ -6,6 +6,7 @@ public class Pedido {
 	private Funcionario idFuncionario;
 	private String dataPed;
 	private float precoPed;
+	
 	public int getIdPedido() {
 		return idPedido;
 	}

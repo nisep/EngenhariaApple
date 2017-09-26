@@ -36,7 +36,12 @@ public class FuncionarioDAO {
 		try {
 			Statement stmt = conex.createStatement();
 			stmt.execute("select * from funcionario where ");
-			
 			return true;
+		}catch(SQLException sqle) {
+			System.out.println(sqle.getMessage());
+			return false;
+		}finally {
+			bd.Desconectar(conex);
+		}
 	}
 }

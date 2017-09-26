@@ -3,27 +3,25 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import view.CadastroClienteView;
-import view.ClienteView;
+import view.NotaEntradaView;
 
-public class InputListenerClienteView implements MouseListener {
-	ClienteView clienteView;
+public class InputListenerNotaEntradaView implements MouseListener {
+	NotaEntradaView notaEntradaView;
 
-	public InputListenerClienteView(ClienteView clienteView) {
+	public InputListenerNotaEntradaView(NotaEntradaView notaEntradaView) {
 		// TODO Auto-generated constructor stub
-		this.clienteView = clienteView;
+		this.notaEntradaView = notaEntradaView;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == clienteView.getBuscarButton()) {
+		if (e.getSource() == notaEntradaView.getBuscarButton()) {
 			System.out.println("Botão Ok clicado");
-		}else if ((e.getSource()) == clienteView.getbtnNovoCliente()) {
+		}else if ((e.getSource()) == notaEntradaView.getbtnNovoPedido()) {
 			System.out.println("Botão Novo Clicado");
-			new CadastroClienteView().setVisible(true);
-		}else if(e.getSource() == clienteView.getTableCliente()) {
-			System.err.println("Tabela clicada, linha: "+clienteView.getTableCliente().getSelectedRow());
+		}else if(e.getSource() == notaEntradaView.getTablePedido()) {
+			System.err.println("Tabela clicada, linha: "+notaEntradaView.getTablePedido().getSelectedRow());
 		}
 	}
 
