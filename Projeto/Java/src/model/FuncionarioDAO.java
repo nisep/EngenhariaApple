@@ -12,7 +12,7 @@ import java.sql.Statement;
 import control.DataBase;
 
 public class FuncionarioDAO {
-	DataBase bd = DataBase.getInstance();
+	DataBase bd = new DataBase();
 	Connection conex = bd.Conectar();
 
 	public boolean gravarFuncionario(Funcionario f) {
@@ -27,8 +27,9 @@ public class FuncionarioDAO {
 							+ "','" + f.getTelefone() + "','" + f.getCelular() + "','" + f.getCpf() + "','"
 							+ f.getSalario() + "','" + f.getComissao() + "') ");
 			
-			//int codigo = buscaCodigoFuncionario(f.getCpf());
-			//CopiarImagemFuncionario(codigo,f.getFoto());
+			int codigo = buscaCodigoFuncionario(f.getCpf());
+			CopiarImagemFuncionario(codigo,f.getFoto());
+			System.out.println("deu bom");
 			return true;
 		} catch (SQLException sqle) {
 			System.out.println("Erro ao inserir..." + sqle.getMessage());
@@ -42,8 +43,6 @@ public class FuncionarioDAO {
 	private int buscaCodigoFuncionario(long CPF) {
 		conex = bd.Conectar();
 		try {
-<<<<<<< HEAD
-=======
 			Statement stmt = (Statement) conex.createStatement();
 			String SQL = "SELECT * FROM funcionario";
 			ResultSet rs = stmt.executeQuery(SQL);
@@ -67,7 +66,6 @@ public class FuncionarioDAO {
 	public boolean verificaCPF(long CPF) {
 		conex = bd.Conectar();
 		try {
->>>>>>> refs/remotes/origin/master
 			Statement stmt = (Statement) conex.createStatement();
 			String SQL = "SELECT * FROM funcionario";
 			ResultSet rs = stmt.executeQuery(SQL);
@@ -86,8 +84,6 @@ public class FuncionarioDAO {
 			bd.Desconectar(conex);
 		}
 		return false;
-<<<<<<< HEAD
-=======
 	}
 
 	public void CopiarImagemFuncionario(int codigo, String caminho) {
@@ -111,6 +107,5 @@ public class FuncionarioDAO {
 		
 	
 
->>>>>>> refs/remotes/origin/master
 	}
 }

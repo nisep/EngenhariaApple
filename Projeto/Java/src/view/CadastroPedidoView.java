@@ -17,13 +17,14 @@ public class CadastroPedidoView extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 7876262101294494488L;
-	private InputListenerCadastroPedido listener;
+	InputListenerCadastroPedido listener;
 	private JPanel contentPanel;
 	private JPanel panelFoto;
 	private JTextField textCodigo;
 	private JLabel lblCodigo;
 	private JButton btnPesquisarImagem;
-	private JLabel lblNomeCliente;
+	private JLabel lblNome;
+	private JTextField textNome;
 	private JLabel lblDataCadastro;
 	private JTextField txtDataDoCadastro;
 	private JButton btnCancelar;
@@ -85,7 +86,8 @@ public class CadastroPedidoView extends JDialog {
 			contentPanel.setLayout(null);
 			contentPanel.add(getTextCodigo());
 			contentPanel.add(getLblCodigo());
-			contentPanel.add(getLblNomeCliente());
+			contentPanel.add(getLblNome());
+			contentPanel.add(getTextNome());
 			contentPanel.add(getTextDataCadastro());
 			contentPanel.add(getLblDataCadastro());
 			contentPanel.add(getbtnPesquisarImagem());
@@ -106,6 +108,15 @@ public class CadastroPedidoView extends JDialog {
 		return textCodigo;
 	}
 
+	public JTextField getTextNome() {
+		if (textNome == null) {
+			textNome = new JTextField();
+			textNome.setBounds(30, 95, 281, 20);
+			textNome.setColumns(10);
+		}
+		return textNome;
+	}
+
 	public JLabel getLblCodigo() {
 		if (lblCodigo == null) {
 			lblCodigo = new JLabel("Código");
@@ -114,12 +125,12 @@ public class CadastroPedidoView extends JDialog {
 		return lblCodigo;
 	}
 
-	public JLabel getLblNomeCliente() {
-		if (lblNomeCliente == null) {
-			lblNomeCliente = new JLabel("Nome Cliente");
-			lblNomeCliente.setBounds(30, 70, 86, 14);
+	private JLabel getLblNome() {
+		if (lblNome == null) {
+			lblNome = new JLabel("Nome");
+			lblNome.setBounds(30, 70, 46, 14);
 		}
-		return lblNomeCliente;
+		return lblNome;
 	}
 
 	public JButton getBtnCancelar() {
@@ -153,10 +164,6 @@ public class CadastroPedidoView extends JDialog {
 			lblDataCadastro.setBounds(339, 12, 120, 14);
 		}
 		return lblDataCadastro;
-	}
-	
-	public InputListenerCadastroPedido getListener() {
-		return listener;
 	}
 
 }

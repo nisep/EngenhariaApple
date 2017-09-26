@@ -15,7 +15,7 @@ import javax.swing.border.BevelBorder;
 import control.InputListenerEditarFuncionario;
 
 public class EditarFuncionarioView extends JDialog {
-/*
+
 	private static final long serialVersionUID = -799512330089900923L;
 	InputListenerEditarFuncionario listener;
 	private JPanel contentPanel;
@@ -483,5 +483,5 @@ public class EditarFuncionarioView extends JDialog {
 		}
 		return lblFoto;
 	}
-	*/
+
 }

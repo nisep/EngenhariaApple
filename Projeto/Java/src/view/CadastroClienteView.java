@@ -81,7 +81,7 @@ public class CadastroClienteView extends JDialog {
 	public JButton getbtnPesquisarImagem() {
 		if (btnPesquisarImagem == null) {
 			btnPesquisarImagem = new JButton("Pesquisar Imagem");
-			btnPesquisarImagem.setBounds(404, 440, 147, 23);
+			btnPesquisarImagem.setBounds(411, 487, 147, 23);
 		}
 		return btnPesquisarImagem;
 	}
@@ -89,7 +89,7 @@ public class CadastroClienteView extends JDialog {
 	public JPanel getpanelFoto() {
 		if (panelFoto == null) {
 			panelFoto = new JPanel();
-			panelFoto.setBounds(341, 148, 275, 281);
+			panelFoto.setBounds(348, 195, 275, 281);
 			panelFoto.setLayout(null);
 		}
 		return panelFoto;
@@ -141,7 +141,7 @@ public class CadastroClienteView extends JDialog {
 	public JTextField getTextNome() {
 		if (textNome == null) {
 			textNome = new JTextField();
-			textNome.setBounds(23, 48, 281, 20);
+			textNome.setBounds(30, 95, 281, 20);
 			textNome.setColumns(10);
 		}
 		return textNome;
@@ -151,7 +151,7 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome");
-			lblNome.setBounds(23, 23, 46, 14);
+			lblNome.setBounds(30, 70, 46, 14);
 		}
 		return lblNome;
 	}
@@ -159,14 +159,14 @@ public class CadastroClienteView extends JDialog {
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
-			btnCancelar.setBounds(527, 483, 89, 23);
+			btnCancelar.setBounds(534, 530, 89, 23);
 		}
 		return btnCancelar;
 	}
 	public JButton getBtnGravar() {
 		if (btnGravar == null) {
 			btnGravar = new JButton("Gravar");
-			btnGravar.setBounds(428, 483, 89, 23);
+			btnGravar.setBounds(435, 530, 89, 23);
 		}
 		return btnGravar;
 	}
@@ -174,14 +174,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblCPF() {
 		if (lblCPF == null) {
 			lblCPF = new JLabel("CPF");
-			lblCPF.setBounds(23, 79, 281, 14);
+			lblCPF.setBounds(30, 126, 281, 14);
 		}
 		return lblCPF;
 	}
 	public JTextField getTextCPF() {
 		if (textCPF == null) {
 			textCPF = new JTextField();
-			textCPF.setBounds(23, 99, 281, 20);
+			textCPF.setBounds(30, 146, 281, 20);
 			textCPF.setColumns(10);
 		}
 		return textCPF;
@@ -192,14 +192,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblRua() {
 		if (lblRua == null) {
 			lblRua = new JLabel("Rua");
-			lblRua.setBounds(23, 130, 281, 14);
+			lblRua.setBounds(30, 177, 281, 14);
 		}
 		return lblRua;
 	}
 	public JTextField getTextRua() {
 		if (textRua == null) {
 			textRua = new JTextField();
-			textRua.setBounds(23, 148, 204, 20);
+			textRua.setBounds(30, 195, 204, 20);
 			textRua.setColumns(10);
 		}
 		return textRua;
@@ -207,7 +207,7 @@ public class CadastroClienteView extends JDialog {
 	public JTextField getTextBairro() {
 		if (textBairro == null) {
 			textBairro = new JTextField();
-			textBairro.setBounds(23, 201, 281, 20);
+			textBairro.setBounds(30, 248, 281, 20);
 			textBairro.setColumns(10);
 		}
 		return textBairro;
@@ -215,7 +215,7 @@ public class CadastroClienteView extends JDialog {
 	public JTextField getTextCidade() {
 		if (textCidade == null) {
 			textCidade = new JTextField();
-			textCidade.setBounds(23, 252, 281, 20);
+			textCidade.setBounds(30, 299, 281, 20);
 			textCidade.setColumns(10);
 		}
 		return textCidade;
@@ -223,7 +223,7 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblBairro() {
 		if (lblBairro == null) {
 			lblBairro = new JLabel("Bairro");
-			lblBairro.setBounds(23, 179, 281, 14);
+			lblBairro.setBounds(30, 226, 281, 14);
 		}
 		return lblBairro;
 	}
@@ -232,21 +232,21 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblCidade() {
 		if (lblCidade == null) {
 			lblCidade = new JLabel("Cidade");
-			lblCidade.setBounds(23, 232, 281, 14);
+			lblCidade.setBounds(30, 279, 281, 14);
 		}
 		return lblCidade;
 	}
 	public JLabel getLblNumero() {
 		if (lblNumero == null) {
 			lblNumero = new JLabel("Numero");
-			lblNumero.setBounds(237, 130, 62, 14);
+			lblNumero.setBounds(244, 177, 62, 14);
 		}
 		return lblNumero;
 	}
 	public JTextField getTextNumero() {
 		if (textNumero == null) {
 			textNumero = new JTextField();
-			textNumero.setBounds(237, 148, 67, 20);
+			textNumero.setBounds(244, 195, 67, 20);
 			textNumero.setColumns(10);
 		}
 		return textNumero;
@@ -254,14 +254,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblComplemento() {
 		if (lblComplemento == null) {
 			lblComplemento = new JLabel("Complemento");
-			lblComplemento.setBounds(23, 283, 281, 14);
+			lblComplemento.setBounds(30, 330, 281, 14);
 		}
 		return lblComplemento;
 	}
 	public JTextField getTextComplemento() {
 		if (textComplemento == null) {
 			textComplemento = new JTextField();
-			textComplemento.setBounds(23, 308, 281, 20);
+			textComplemento.setBounds(30, 355, 281, 20);
 			textComplemento.setColumns(10);
 		}
 		return textComplemento;
@@ -269,14 +269,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblCEP() {
 		if (lblCEP == null) {
 			lblCEP = new JLabel("CEP");
-			lblCEP.setBounds(23, 339, 281, 14);
+			lblCEP.setBounds(30, 386, 281, 14);
 		}
 		return lblCEP;
 	}
 	public JTextField getTextCEP() {
 		if (textCEP == null) {
 			textCEP = new JTextField();
-			textCEP.setBounds(23, 355, 281, 20);
+			textCEP.setBounds(30, 402, 281, 20);
 			textCEP.setColumns(10);
 		}
 		return textCEP;
@@ -284,14 +284,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblDataNascimento() {
 		if (lblDataNascimento == null) {
 			lblDataNascimento = new JLabel("Data Nascimento");
-			lblDataNascimento.setBounds(23, 386, 281, 14);
+			lblDataNascimento.setBounds(30, 433, 281, 14);
 		}
 		return lblDataNascimento;
 	}
 	public JTextField getTextDataNascimento() {
 		if (textDataNascimento == null) {
 			textDataNascimento = new JTextField();
-			textDataNascimento.setBounds(23, 407, 281, 20);
+			textDataNascimento.setBounds(30, 454, 281, 20);
 			textDataNascimento.setColumns(10);
 		}
 		return textDataNascimento;
@@ -299,14 +299,14 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblTelefone() {
 		if (lblTelefone == null) {
 			lblTelefone = new JLabel("Telefone");
-			lblTelefone.setBounds(332, 23, 284, 14);
+			lblTelefone.setBounds(339, 70, 284, 14);
 		}
 		return lblTelefone;
 	}
 	public JTextField getTextTelefone() {
 		if (textTelefone == null) {
 			textTelefone = new JTextField();
-			textTelefone.setBounds(332, 48, 284, 20);
+			textTelefone.setBounds(339, 95, 284, 20);
 			textTelefone.setColumns(10);
 		}
 		return textTelefone;
@@ -314,7 +314,7 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblCelular() {
 		if (lblCelular == null) {
 			lblCelular = new JLabel("Celular");
-			lblCelular.setBounds(332, 79, 284, 14);
+			lblCelular.setBounds(339, 126, 284, 14);
 		}
 		return lblCelular;
 	}
@@ -322,7 +322,7 @@ public class CadastroClienteView extends JDialog {
 	public JTextField getTextCelular() {
 		if (textCelular == null) {
 			textCelular = new JTextField();
-			textCelular.setBounds(332, 105, 284, 20);
+			textCelular.setBounds(339, 152, 284, 20);
 			textCelular.setColumns(10);
 		}
 		return textCelular;
@@ -331,7 +331,7 @@ public class CadastroClienteView extends JDialog {
 	public JLabel getLblFoto() {
 		if (lblFoto == null) {
 			lblFoto = new JLabel("");
-			lblFoto.setBounds(341, 148, 275, 281);
+			lblFoto.setBounds(348, 195, 275, 281);
 			lblFoto.setIcon(new ImageIcon("Interno/default-avatar.png"));
 		}
 		return lblFoto;
