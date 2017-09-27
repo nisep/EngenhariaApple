@@ -61,7 +61,9 @@ public class EditarProdutoView extends JDialog {
 	public void initialize() {
 		this.setModal(true);
 		setBounds(100, 100, 649, 500);
+		setTitle("Edição de Produto");
 		setContentPane(getContentPanel());
+		
 
 	}
 

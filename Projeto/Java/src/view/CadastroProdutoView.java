@@ -55,6 +55,7 @@ public class CadastroProdutoView extends JDialog {
 		this.setModal(true);
 		setBounds(100, 100, 649, 500);
 		setContentPane(getContentPanel());
+		setTitle("Cadastro de Produto");
 
 	}
 

@@ -84,6 +84,7 @@ public class CadastroFuncionarioView extends JDialog {
 		this.setModal(true);
 		setBounds(100, 100, 649, 700);
 		setContentPane(getContentPanel());
+		setTitle("Cadastro de Funcionários");
 		setLocationRelativeTo(null);
 		setResizable(false);
 
