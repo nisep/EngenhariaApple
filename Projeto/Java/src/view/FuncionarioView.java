@@ -57,6 +57,13 @@ public class FuncionarioView extends JDialog {
 		initializeListeners();
 	}
 	
+	
+	
+	
+	public void setTableFuncionario(JTable tableFuncionario) {
+		this.tableFuncionario = tableFuncionario;
+	}
+
 	public JTable getTableFuncionario() {
 		if(tableFuncionario == null){
 			String[] colunas = {"id","Nome", "CPF", "Endereço", "Telefone","Nascimento"};

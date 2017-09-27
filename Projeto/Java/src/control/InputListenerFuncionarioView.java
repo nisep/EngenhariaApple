@@ -2,9 +2,10 @@ package control;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-import model.Funcionario;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import model.FuncionarioDAO;
 import view.CadastroFuncionarioView;
 import view.EditarFuncionarioView;
@@ -25,14 +26,26 @@ public class InputListenerFuncionarioView implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == funcionarioView.getBuscarButton()) {
-			ArrayList<Funcionario> funcs = new ArrayList<Funcionario>();
-			funcs = funcDAO.buscaCPFNomeFuncionario(funcionarioView.getTextBusca().getText());
-			System.out.println(funcs.size());
-			//funcionarioView.getTableFuncionario() = 
+			String[][] funcs = funcDAO.listaFuncionarioArray(funcionarioView.getTextBusca().getText());
+			String[] colunas = {"id","Nome", "CPF", "Endereço", "Telefone","Nascimento"};
 			
+			JTable tableFuncionario = new JTable(new DefaultTableModel(funcs,colunas) {
+				 /**
+				 * 
+				 */
+				private static final long serialVersionUID = -7018342759131611914L;
+				boolean[] canEdit = new boolean []{  
+				            false, false, false, false,false,false
+				        };  
+				        @Override  
+				        public boolean isCellEditable(int rowIndex, int columnIndex) {  
+				            return canEdit [columnIndex];  
+				        }
+			});
+			funcionarioView.setTableFuncionario(tableFuncionario);
 			
-			EditarFuncionarioView edicaoFuncionarioView = new EditarFuncionarioView();
-			edicaoFuncionarioView.setVisible(true);
+			//EditarFuncionarioView edicaoFuncionarioView = new EditarFuncionarioView();
+			//edicaoFuncionarioView.setVisible(true);
 		} else if ((e.getSource()) == funcionarioView.getbtnNovoFuncionario()) {
 			CadastroFuncionarioView cadastroFuncionarioView;
 			System.out.println("Botão Novo Clicado");

@@ -129,10 +129,11 @@ public class FuncionarioDAO {
 
 	public ArrayList<Funcionario> buscaCPFNomeFuncionario(String campo) {
 		conex = bd.Conectar();
-		
+
 		try {
 			Statement stmt = (Statement) conex.createStatement();
-			String SQL = "SELECT * FROM funcionario WHERE nomeFunc LIKE '%" + campo + "%' OR cpfFunc LIKE '" + campo+ "'";
+			String SQL = "SELECT * FROM funcionario WHERE nomeFunc LIKE '%" + campo + "%' OR cpfFunc LIKE '" + campo
+					+ "'";
 			ResultSet rs = stmt.executeQuery(SQL);
 			ArrayList<Funcionario> funcs = new ArrayList<>();
 			Funcionario func = new Funcionario();
@@ -144,7 +145,7 @@ public class FuncionarioDAO {
 				func.setTelefone(rs.getLong("telefoneFunc"));
 				func.setRua(rs.getString("ruaFunc"));
 				funcs.add(func);
-	
+
 			}
 			rs.close();
 			stmt.close();
@@ -156,10 +157,10 @@ public class FuncionarioDAO {
 			bd.Desconectar(conex);
 		}
 	}
-	
+
 	public ArrayList<Funcionario> listaFuncionario() {
 		conex = bd.Conectar();
-		
+
 		try {
 			Statement stmt = (Statement) conex.createStatement();
 			String SQL = "SELECT * FROM funcionario";
@@ -180,6 +181,39 @@ public class FuncionarioDAO {
 			return funcs;
 		} catch (SQLException sqle) {
 			System.out.println("Erro ao consultar..." + sqle.getMessage());
+			return null;
+		} finally {
+			bd.Desconectar(conex);
+		}
+	}
+
+	public String[][] listaFuncionarioArray(String campo) {
+		conex = bd.Conectar();
+		try {
+			Statement stmt = (Statement) conex.createStatement();
+			String SQL = "SELECT * FROM funcionario WHERE nomeFunc LIKE '%" + campo + "%' OR cpfFunc LIKE '" + campo
+					+ "'";
+			ResultSet rs = stmt.executeQuery(SQL);
+			rs.last();
+			int size = rs.getRow();
+			rs.beforeFirst();
+
+			String funcs[][] = new String[size][6];
+			int cont = 0;
+			while (rs.next()) {
+				funcs[cont][1] = rs.getString("nomeFunc");
+				funcs[cont][0] = "" + rs.getInt("idFuncionario");
+				funcs[cont][2] = "" + rs.getLong("cpfFunc");
+				funcs[cont][4] = "" + rs.getDate("dataNascFunc");
+				funcs[cont][3] = "" + rs.getLong("telefoneFunc");
+				funcs[cont][5] = rs.getString("ruaFunc");
+				cont++;
+			}
+			rs.close();
+			stmt.close();
+			return funcs;
+		} catch (SQLException sqle) {
+			System.out.println("Erro ao listar..." + sqle.getMessage());
 			return null;
 		} finally {
 			bd.Desconectar(conex);
