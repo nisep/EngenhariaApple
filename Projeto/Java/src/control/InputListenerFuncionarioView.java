@@ -3,12 +3,19 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import model.FuncionarioDAO;
 import view.CadastroFuncionarioView;
+import view.EditarFuncionarioView;
 import view.FuncionarioView;
 
 public class InputListenerFuncionarioView implements MouseListener {
 	FuncionarioView funcionarioView;
-	CadastroFuncionarioView cadastroFuncionarioView;
+	//private Funcionario func;
+	private FuncionarioDAO funcDAO = new FuncionarioDAO();
+	
 
 	public InputListenerFuncionarioView(FuncionarioView funcionarioView) {
 		// TODO Auto-generated constructor stub
@@ -19,13 +26,33 @@ public class InputListenerFuncionarioView implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == funcionarioView.getBuscarButton()) {
-			System.out.println("Botão Ok clicado");
-		}else if ((e.getSource()) == funcionarioView.getbtnNovoFuncionario()) {
+			String[][] funcs = funcDAO.listaFuncionarioArray(funcionarioView.getTextBusca().getText());
+			String[] colunas = {"id","Nome", "CPF", "Endereço", "Telefone","Nascimento"};
+			
+			JTable tableFuncionario = new JTable(new DefaultTableModel(funcs,colunas) {
+				 /**
+				 * 
+				 */
+				private static final long serialVersionUID = -7018342759131611914L;
+				boolean[] canEdit = new boolean []{  
+				            false, false, false, false,false,false
+				        };  
+				        @Override  
+				        public boolean isCellEditable(int rowIndex, int columnIndex) {  
+				            return canEdit [columnIndex];  
+				        }
+			});
+			funcionarioView.setTableFuncionario(tableFuncionario);
+			
+			//EditarFuncionarioView edicaoFuncionarioView = new EditarFuncionarioView();
+			//edicaoFuncionarioView.setVisible(true);
+		} else if ((e.getSource()) == funcionarioView.getbtnNovoFuncionario()) {
+			CadastroFuncionarioView cadastroFuncionarioView;
 			System.out.println("Botão Novo Clicado");
 			cadastroFuncionarioView = new CadastroFuncionarioView();
 			cadastroFuncionarioView.setVisible(true);
-		}else if(e.getSource() == funcionarioView.getTableFuncionario()) {
-			System.err.println("Tabela clicada, linha: "+funcionarioView.getTableFuncionario().getSelectedRow());
+		} else if (e.getSource() == funcionarioView.getTableFuncionario()) {
+			System.err.println("Tabela clicada, linha: " + funcionarioView.getTableFuncionario().getSelectedRow());
 		}
 	}
 
