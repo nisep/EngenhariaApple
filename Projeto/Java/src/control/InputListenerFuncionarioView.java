@@ -29,7 +29,7 @@ public class InputListenerFuncionarioView implements MouseListener {
 			String[][] funcs = funcDAO.listaFuncionarioArray(funcionarioView.getTextBusca().getText());
 			String[] colunas = {"id","Nome", "CPF", "Endereço", "Telefone","Nascimento"};
 			
-			JTable tableFuncionario = new JTable(new DefaultTableModel(funcs,colunas) {
+			DefaultTableModel model = new DefaultTableModel(funcs,colunas) {
 				 /**
 				 * 
 				 */
@@ -41,8 +41,10 @@ public class InputListenerFuncionarioView implements MouseListener {
 				        public boolean isCellEditable(int rowIndex, int columnIndex) {  
 				            return canEdit [columnIndex];  
 				        }
-			});
-			funcionarioView.setTableFuncionario(tableFuncionario);
+			};
+			funcionarioView.getTableFuncionario().setModel(model);
+			funcionarioView.repaint();
+			funcionarioView.revalidate();
 			
 			//EditarFuncionarioView edicaoFuncionarioView = new EditarFuncionarioView();
 			//edicaoFuncionarioView.setVisible(true);
