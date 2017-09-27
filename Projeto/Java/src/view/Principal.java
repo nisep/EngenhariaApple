@@ -1,69 +1,66 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import control.Contador;
+import control.InputListenerPrincipal;
 
 public class Principal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6110345484380030496L;
 	private JPanel contentPane;
+	private JLabel lblFundo;
+	private JLabel lblLogo;
+	private JButton btnIniciar;
+	private Contador c1;
+	private Thread t1;
+	private InputListenerPrincipal listener;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		new Principal().setVisible(true);
+		
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Principal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1244, 700);
-		setLocationRelativeTo(null);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		JButton btnIniciar = new JButton("Iniciar");
-		btnIniciar.setBounds(1129, 627, 89, 23);
-		contentPane.add(btnIniciar);
-		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\danie\\Desktop\\git\\Engenharia_SoftW\\Projeto\\Java\\Interno\\logo2.png"));
-		label.setBounds(472, 200, 300, 300);
-		contentPane.add(label);
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("C:\\Users\\danie\\Desktop\\git\\Engenharia_SoftW\\Projeto\\Java\\Interno\\01_1.jpg"));
-		label_1.setBounds(0, 0, 1244, 700);
-		contentPane.add(label_1);
-		
+		initialize();
+		initializeListeners();
 		
 	}
 	
-	public void initilize() {
+	public void initializeListeners() {
+		getBtnIniciar().addMouseListener(getListener());
+	}
+	public InputListenerPrincipal getListener() {
+		if(listener == null) {
+			listener = new InputListenerPrincipal(this);
+		}
+		return listener;
+	}
+
+	public void initialize() {
 		// TODO Auto-generated method stub
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		
+		setBounds(100, 100, 1244, 700);
+		setLocationRelativeTo(null);
 		setContentPane(getContentPane());
+		setTitle("Início");
+		getT1().start();
 	}
 	
 	public JPanel getContentPane() {
@@ -71,7 +68,45 @@ public class Principal extends JFrame {
 			contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			contentPane.setLayout(new BorderLayout(0, 0));
+			contentPane.setLayout(null);
+			contentPane.add(getBtnIniciar());
+			contentPane.add(getLblLogo());
+			contentPane.add(getLblFundo());
 		}
 		return contentPane;
+	}
+	
+	public JButton getBtnIniciar() {
+		if(btnIniciar == null) {
+			btnIniciar = new JButton("Iniciar");
+			btnIniciar.setBounds(1129, 627, 89, 23);
+		}
+		return btnIniciar;
+	}
+
+	public JLabel getLblFundo() {
+		if(lblFundo == null) {
+			lblFundo = new JLabel("");
+			lblFundo.setIcon(new ImageIcon("Interno/1.jpg"));
+			lblFundo.setBounds(0, 0, 1244, 700);
+		}
+		return lblFundo;
+	}
+	
+	public JLabel getLblLogo() {
+		if(lblLogo == null) {
+			lblLogo = new JLabel("");
+			lblLogo.setIcon(new ImageIcon("Interno/logo2.png"));
+			lblLogo.setBounds(472, 200, 300, 300);
+		}
+		return lblLogo;
+	}
+	
+	public Thread getT1() {
+		if(t1 == null) {
+			c1 = new Contador(this);
+			t1 = new Thread(c1);
+		}
+		return t1;
 	}
 }
