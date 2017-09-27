@@ -87,6 +87,7 @@ public class EditarFuncionarioView extends JDialog {
 		this.setModal(true);
 		setBounds(100, 100, 649, 700);
 		setContentPane(getContentPanel());
+		setTitle("Edição de Funcionário");
 		setLocationRelativeTo(null);
 		setResizable(false);
 

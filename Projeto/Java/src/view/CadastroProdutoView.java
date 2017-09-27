@@ -6,12 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 import control.InputListenerCadastroProduto;
-import javax.swing.JTextArea;
-import javax.swing.UIManager;
 
 public class CadastroProdutoView extends JDialog {
 
@@ -21,8 +21,6 @@ public class CadastroProdutoView extends JDialog {
 	private static final long serialVersionUID = 158269313715179772L;
 	private JPanel contentPanel;
 	private JPanel panelFoto;
-	private JTextField textCodigo;
-	private JLabel lblCodigo;
 	private JButton btnPesquisarImagem;
 	InputListenerCadastroProduto listener;
 	private JLabel lblNome;
@@ -32,12 +30,9 @@ public class CadastroProdutoView extends JDialog {
 	private JLabel lblPrecoVenda;
 	private JTextField textPrecoVenda;
 	private JLabel lblDescricao;
-	private JLabel lblDataCadastro;
-	private JTextField txtDataDoCadastro;
 	private JButton btnCancelar;
 	private JButton btnGravar;
 	private JTextArea textDescricao;
-	
 
 	public static void main(String[] args) {
 		try {
@@ -60,6 +55,7 @@ public class CadastroProdutoView extends JDialog {
 		this.setModal(true);
 		setBounds(100, 100, 649, 500);
 		setContentPane(getContentPanel());
+		setTitle("Cadastro de Produto");
 
 	}
 
@@ -84,8 +80,6 @@ public class CadastroProdutoView extends JDialog {
 			contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
 			contentPanel.setLayout(null);
-			contentPanel.add(getTextCodigo());
-			contentPanel.add(getLblCodigo());
 			contentPanel.add(getLblNome());
 			contentPanel.add(getTextNome());
 			contentPanel.add(getLblPrecoCompra());
@@ -93,8 +87,6 @@ public class CadastroProdutoView extends JDialog {
 			contentPanel.add(getLblPrecoVenda());
 			contentPanel.add(getTextPrecoVenda());
 			contentPanel.add(getLblDescricao());
-			contentPanel.add(getTextDataCadastro());
-			contentPanel.add(getLblDataCadastro());
 			contentPanel.add(getbtnPesquisarImagem());
 
 			contentPanel.add(getpanelFoto());
@@ -102,19 +94,8 @@ public class CadastroProdutoView extends JDialog {
 			contentPanel.add(getBtnGravar());
 			contentPanel.add(getTextDescricao());
 
-				
-			
-
 		}
 		return contentPanel;
-	}
-	
-	public JLabel getLblDataCadastro() {
-		if (lblDataCadastro == null) {
-			lblDataCadastro = new JLabel("Data do Cadastro");
-			lblDataCadastro.setBounds(339, 12, 120, 14);
-		}
-		return lblDataCadastro;
 	}
 
 	public JPanel getpanelFoto() {
@@ -126,23 +107,6 @@ public class CadastroProdutoView extends JDialog {
 
 	}
 
-	public JTextField getTextDataCadastro() {
-		if (txtDataDoCadastro == null) {
-			txtDataDoCadastro = new JTextField();
-			txtDataDoCadastro.setBounds(339, 38, 86, 20);
-			txtDataDoCadastro.setColumns(10);
-		}
-		return txtDataDoCadastro;
-	}
-
-	public JTextField getTextCodigo() {
-		if (textCodigo == null) {
-			textCodigo = new JTextField();
-			textCodigo.setBounds(30, 37, 281, 22);
-		}
-		return textCodigo;
-	}
-
 	public JTextField getTextNome() {
 		if (textNome == null) {
 			textNome = new JTextField();
@@ -150,14 +114,6 @@ public class CadastroProdutoView extends JDialog {
 			textNome.setColumns(10);
 		}
 		return textNome;
-	}
-
-	public JLabel getLblCodigo() {
-		if (lblCodigo == null) {
-			lblCodigo = new JLabel("Código");
-			lblCodigo.setBounds(34, 12, 46, 14);
-		}
-		return lblCodigo;
 	}
 
 	public JLabel getLblNome() {
@@ -209,6 +165,7 @@ public class CadastroProdutoView extends JDialog {
 		}
 		return lblDescricao;
 	}
+
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
@@ -216,6 +173,7 @@ public class CadastroProdutoView extends JDialog {
 		}
 		return btnCancelar;
 	}
+
 	public JButton getBtnGravar() {
 		if (btnGravar == null) {
 			btnGravar = new JButton("Gravar");
@@ -223,7 +181,7 @@ public class CadastroProdutoView extends JDialog {
 		}
 		return btnGravar;
 	}
-	
+
 	public JTextArea getTextDescricao() {
 		if (textDescricao == null) {
 			textDescricao = new JTextArea();
