@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import control.DataBase;
 
@@ -26,9 +27,9 @@ public class FuncionarioDAO {
 							+ f.getDataAdmissao() + "','" + f.getCep() + "','" + f.getSenha() + "','" + f.getFoto()
 							+ "','" + f.getTelefone() + "','" + f.getCelular() + "','" + f.getCpf() + "','"
 							+ f.getSalario() + "','" + f.getComissao() + "') ");
-			
+
 			int codigo = buscaCodigoFuncionario(f.getCpf());
-			CopiarImagemFuncionario(codigo,f.getFoto());
+			CopiarImagemFuncionario(codigo, f.getFoto());
 			System.out.println("deu bom");
 			return true;
 		} catch (SQLException sqle) {
@@ -40,7 +41,7 @@ public class FuncionarioDAO {
 
 	}
 
-	private int buscaCodigoFuncionario(long CPF) {
+	public int buscaCodigoFuncionario(long CPF) {
 		conex = bd.Conectar();
 		try {
 			Statement stmt = (Statement) conex.createStatement();
@@ -87,7 +88,7 @@ public class FuncionarioDAO {
 	}
 
 	public void CopiarImagemFuncionario(int codigo, String caminho) {
-		FileInputStream origem= null;
+		FileInputStream origem = null;
 		FileOutputStream destino = null;
 		FileChannel fcOrigem = null;
 		FileChannel fcDestino = null;
@@ -104,12 +105,86 @@ public class FuncionarioDAO {
 			e.printStackTrace();
 		}
 
-		
-	
-
 	}
 
-		
+	public boolean editarArmaSQL(Funcionario f) {
+		conex = bd.Conectar();
+		try {
+			Statement stmt = conex.createStatement();
+			stmt.execute("UPDATE funcionario SET nomeFunc='" + f.getNome() + "', ruaFunc='" + f.getRua()
+					+ "', compFunc='" + f.getComplemento() + "', numeroFunc='" + f.getNumero() + "', bairroFunc='"
+					+ f.getBairro() + "', cidadeFunc='" + f.getCidade() + "', dataNascFunc='" + f.getDataNascimento()
+					+ "', cepFunc ='" + f.getCep() + "', celularFunc='" + f.getCelular() + "', senhaFunc='"
+					+ f.getSenha() + "', salarioFunc='" + f.getSalario() + "', comissaoFunc='" + f.getComissao()
+					+ "', telefoneFunc='" + f.getTelefone() + "'  WHERE idFuncionario='" + f.getIdFuncionario() + "' ");
+			stmt.close();
+			return true;
+		} catch (SQLException sqle) {
+			System.out.println("Erro ao alterar..." + sqle.getMessage());
+		} finally {
+			bd.Desconectar(conex);
+		}
+		return false;
+	}
 
+	public ArrayList<Funcionario> buscaCPFNomeFuncionario(String campo) {
+		conex = bd.Conectar();
+		
+		try {
+			Statement stmt = (Statement) conex.createStatement();
+			String SQL = "SELECT * FROM funcionario WHERE nomeFunc LIKE '%" + campo + "%' OR cpfFunc LIKE '" + campo+ "'";
+			ResultSet rs = stmt.executeQuery(SQL);
+			ArrayList<Funcionario> funcs = new ArrayList<>();
+			Funcionario func = new Funcionario();
+			while (rs.next()) {
+				func.setNome(rs.getString("nomeFunc"));
+				func.setIdFuncionario(rs.getInt("idFuncionario"));
+				func.setCpf(rs.getLong("cpfFunc"));
+				func.setDataNascimento(rs.getDate("dataNascFunc"));
+				func.setTelefone(rs.getLong("telefoneFunc"));
+				func.setRua(rs.getString("ruaFunc"));
+				funcs.add(func);
+	
+			}
+			rs.close();
+			stmt.close();
+			return funcs;
+		} catch (SQLException sqle) {
+			System.out.println("Erro ao consultar..." + sqle.getMessage());
+			return null;
+		} finally {
+			bd.Desconectar(conex);
+		}
+	}
+	
+	public ArrayList<Funcionario> listaFuncionario() {
+		conex = bd.Conectar();
+		
+		try {
+			Statement stmt = (Statement) conex.createStatement();
+			String SQL = "SELECT * FROM funcionario";
+			ResultSet rs = stmt.executeQuery(SQL);
+			ArrayList<Funcionario> funcs = new ArrayList<>();
+			Funcionario func = new Funcionario();
+			while (rs.next()) {
+				func.setNome(rs.getString("nomeFunc"));
+				func.setIdFuncionario(rs.getInt("idFuncionario"));
+				func.setCpf(rs.getLong("cpfFunc"));
+				func.setDataNascimento(rs.getDate("dataNascFunc"));
+				func.setTelefone(rs.getLong("telefoneFunc"));
+				func.setRua(rs.getString("ruaFunc"));
+				funcs.add(func);
+	
+			}
+			rs.close();
+			stmt.close();
+			return funcs;
+		} catch (SQLException sqle) {
+			System.out.println("Erro ao consultar..." + sqle.getMessage());
+			return null;
+		} finally {
+			bd.Desconectar(conex);
+		}
+	}
 
 }
