@@ -1,111 +1,112 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
+
+import control.Contador;
+import control.InputListenerPrincipal;
 
 public class Principal extends JFrame {
 
 	/**
 	 * 
 	 */
-	
-
-	private static final long serialVersionUID = 6375324782041802229L;
+	private static final long serialVersionUID = -6110345484380030496L;
 	private JPanel contentPane;
+	private JLabel lblFundo;
+	private JLabel lblLogo;
+	private JButton btnIniciar;
+	private Contador c1;
+	private Thread t1;
+	private InputListenerPrincipal listener;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		new Principal().setVisible(true);
+		
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Principal() {
+		initialize();
+		initializeListeners();
+		
+	}
+	
+	public void initializeListeners() {
+		getBtnIniciar().addMouseListener(getListener());
+	}
+	public InputListenerPrincipal getListener() {
+		if(listener == null) {
+			listener = new InputListenerPrincipal(this);
+		}
+		return listener;
+	}
+
+	public void initialize() {
+		// TODO Auto-generated method stub
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1366, 768);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnCadastros = new JMenu("Cadastros");
-		menuBar.add(mnCadastros);
-		
-		JMenuItem mntmCliente = new JMenuItem("Cliente");
-		mnCadastros.add(mntmCliente);
-		JMenuItem mntmFuncionario = new JMenuItem("Funcionario");
-		mnCadastros.add(mntmFuncionario);
-		JMenuItem mntmProdutos = new JMenuItem("Produtos");
-		mnCadastros.add(mntmProdutos);
-		JMenuItem mntmVendas = new JMenuItem("Vendas");
-		mnCadastros.add(mntmVendas);
-		
-		JMenu mnRelatrios = new JMenu("Relat\u00F3rios");
-		menuBar.add(mnRelatrios);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(0, 0, 1350, 48);
-		contentPane.add(panel);
-		
-		JButton btnNewButton_4 = new JButton("New button");
-		panel.add(btnNewButton_4);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		panel.add(btnNewButton_3);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(0, 51, 1350, 661);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel label = new JLabel("");
-		label.setBackground(Color.WHITE);
-		label.setForeground(Color.WHITE);
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(0, 0, 1350, 650);
-		panel_1.add(label);
-		label.setIcon(new ImageIcon("Interno/logo.png"));
+		setBounds(100, 100, 1244, 700);
+		setLocationRelativeTo(null);
+		setContentPane(getContentPane());
+		setTitle("Início");
+		getT1().start();
+	}
+	
+	public JPanel getContentPane() {
+		if(contentPane == null) {
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(new BorderLayout(0, 0));
+			contentPane.setLayout(null);
+			contentPane.add(getBtnIniciar());
+			contentPane.add(getLblLogo());
+			contentPane.add(getLblFundo());
+		}
+		return contentPane;
+	}
+	
+	public JButton getBtnIniciar() {
+		if(btnIniciar == null) {
+			btnIniciar = new JButton("Iniciar");
+			btnIniciar.setBounds(1129, 627, 89, 23);
+		}
+		return btnIniciar;
+	}
+
+	public JLabel getLblFundo() {
+		if(lblFundo == null) {
+			lblFundo = new JLabel("");
+			lblFundo.setIcon(new ImageIcon("Interno/1.jpg"));
+			lblFundo.setBounds(0, 0, 1244, 700);
+		}
+		return lblFundo;
+	}
+	
+	public JLabel getLblLogo() {
+		if(lblLogo == null) {
+			lblLogo = new JLabel("");
+			lblLogo.setIcon(new ImageIcon("Interno/logo2.png"));
+			lblLogo.setBounds(472, 200, 300, 300);
+		}
+		return lblLogo;
+	}
+	
+	public Thread getT1() {
+		if(t1 == null) {
+			c1 = new Contador(this);
+			t1 = new Thread(c1);
+		}
+		return t1;
 	}
 }
