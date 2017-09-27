@@ -10,8 +10,6 @@ public class Main {
 				com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "mac");
 		    } catch (Exception e) {}
 		new PrincipalAdm().setVisible(true);
-
-
 	}
 
 }
