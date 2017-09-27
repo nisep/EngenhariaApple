@@ -1,23 +1,38 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import control.InputListenerLoginView;
+
+import java.awt.Color;
 
 public class LoginView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4036120664241935676L;
+	
 	private JPanel contentPane;
-	private JPasswordField pwSenha;
-	private JTextField textField;
+	private JLabel lblCpf;
+	private JTextField textCpf;
+	private JLabel lblSenha;
+	private JPasswordField passwordField;
+	private JButton btnLogin;
+	private JButton btnCancelar;
+	private JLabel lblLogo;
+	private JLabel lblFundo;
+	InputListenerLoginView listener;
 
 	/**
 	 * Launch the application.
@@ -39,43 +54,107 @@ public class LoginView extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginView() {
+		listener = new InputListenerLoginView(this);
+		initialize();
+		initializeListeners();
+	}
+	
+	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 275);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(150, 155, 89, 23);
-		contentPane.add(btnEntrar);
-		
-		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(160, 189, 66, 23);
-		contentPane.add(btnSair);
-		
-		pwSenha = new JPasswordField();
-		pwSenha.setBounds(120, 124, 148, 20);
-		contentPane.add(pwSenha);
-		
-		textField = new JTextField();
-		textField.setBounds(120, 68, 148, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSenha.setBounds(0, 99, 384, 14);
-		contentPane.add(lblSenha);
-		
-		JLabel lblCPF = new JLabel("CPF");
-		lblCPF.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCPF.setBounds(0, 43, 384, 14);
-		contentPane.add(lblCPF);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Carlos\\Dropbox\\Inatel\\P7\\EC_206\\LAB\\EngenhariaApple\\Projeto\\Java\\Interno\\logo.png"));
-		lblNewLabel.setBounds(0, -74, 294, 281);
-		contentPane.add(lblNewLabel);
+		setBounds(100, 100, 650, 321);
+		setLocationRelativeTo(null);
+		setContentPane(getContentPane());
+	}
+
+	public void initializeListeners() {
+		getBtnLogin().addMouseListener(listener);
+		getBtnCancelar().addMouseListener(listener);
+	}	
+	
+
+	public JPanel getContentPane() {
+		if(contentPane == null) {
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(null);
+			contentPane.add(getLblCpf());
+			contentPane.add(getTextCpf());
+			contentPane.add(getLblSenha());
+			contentPane.add(getPasswordField());
+			contentPane.add(getBtnLogin());
+			contentPane.add(getBtnCancelar());
+			contentPane.add(getLblLogo());
+			contentPane.add(getLblFundo());
+		}
+		return contentPane;
+	}
+	
+	public JLabel getLblCpf() {
+		if(lblCpf == null) {
+			lblCpf = new JLabel("CPF");
+			lblCpf.setForeground(Color.WHITE);
+			lblCpf.setHorizontalAlignment(SwingConstants.CENTER);
+			lblCpf.setBounds(10, 47, 614, 14);
+		}
+		return lblCpf;
+	}
+	
+	public JTextField getTextCpf() {
+		if(textCpf == null) {
+			textCpf = new JTextField();
+			textCpf.setHorizontalAlignment(SwingConstants.CENTER);
+			textCpf.setBounds(197, 72, 243, 20);
+			textCpf.setColumns(10);
+		}
+		return textCpf;
+	}
+	
+	
+	public JLabel getLblSenha() {
+		if (lblSenha == null) {
+			lblSenha = new JLabel("Senha");
+			lblSenha.setForeground(Color.WHITE);
+			lblSenha.setHorizontalAlignment(SwingConstants.CENTER);
+			lblSenha.setBounds(10, 103, 614, 14);
+		}
+		return lblSenha;
+	}
+	public JPasswordField getPasswordField() {
+		if (passwordField == null) {
+			passwordField = new JPasswordField();
+			passwordField.setHorizontalAlignment(SwingConstants.CENTER);
+			passwordField.setBounds(197, 128, 243, 20);
+		}
+		return passwordField;
+	}
+	public JButton getBtnLogin() {
+		if (btnLogin == null) {
+			btnLogin = new JButton("Login");
+			btnLogin.setBounds(255, 175, 127, 23);
+		}
+		return btnLogin;
+	}
+	public JButton getBtnCancelar() {
+		if (btnCancelar == null) {
+			btnCancelar = new JButton("Cancelar");
+			btnCancelar.setBounds(274, 231, 89, 23);
+		}
+		return btnCancelar;
+	}
+	public JLabel getLblLogo() {
+		if (lblLogo == null) {
+			lblLogo = new JLabel("");
+			lblLogo.setIcon(new ImageIcon("Interno/logo.png"));
+			lblLogo.setBounds(80, 40, 100, 112);
+		}
+		return lblLogo;
+	}
+	public JLabel getLblFundo() {
+		if (lblFundo == null) {
+			lblFundo = new JLabel("");
+			lblFundo.setIcon(new ImageIcon("Interno/fundoLogin.jpg"));
+			lblFundo.setBounds(0, 0, 650, 321);
+		}
+		return lblFundo;
 	}
 }

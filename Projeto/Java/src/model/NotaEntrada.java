@@ -7,7 +7,7 @@ public class NotaEntrada {
 	private int idNota;
 	private int idProduto;
 	private int quantidade;
-	private Date dataCompra;
+	private String dataCompra;
 	private String fornecedor;
 	private double preco;
 	
@@ -29,10 +29,10 @@ public class NotaEntrada {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public Date getDataCompra() {
+	public String getDataCompra() {
 		return dataCompra;
 	}
-	public void setDataCompra(Date dataCompra) {
+	public void setDataCompra(String dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 	public String getFornecedor() {

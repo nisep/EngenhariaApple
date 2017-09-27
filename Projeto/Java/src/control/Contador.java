@@ -19,7 +19,7 @@ public class Contador implements Runnable{
 			for(;;) {
 				Thread.sleep(3500);
 				principal.getLblFundo().setIcon(new ImageIcon("Interno/"+i+".jpg"));
-				if(i == 2 ) i = 1;
+				if(i == 5) i = 1;
 				else i++;
 			}
 		} catch (InterruptedException e) {
