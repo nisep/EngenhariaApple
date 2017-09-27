@@ -174,7 +174,6 @@ public class FuncionarioDAO {
 				func.setTelefone(rs.getLong("telefoneFunc"));
 				func.setRua(rs.getString("ruaFunc"));
 				funcs.add(func);
-	
 			}
 			rs.close();
 			stmt.close();
