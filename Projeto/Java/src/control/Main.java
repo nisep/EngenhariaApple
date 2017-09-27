@@ -1,8 +1,6 @@
 package control;
 
-import javax.swing.JOptionPane;
-
-import view.LoginView;
+import view.PrincipalAdm;
 
 public class Main {
 
@@ -11,7 +9,7 @@ public class Main {
 				javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
 				com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "mac");
 		    } catch (Exception e) {}
-		JOptionPane.showMessageDialog(null, "Login Inválido!","Erro",JOptionPane.ERROR_MESSAGE);
+		new PrincipalAdm().setVisible(true);
 
 
 	}
