@@ -125,7 +125,6 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 					System.out.println(getFunc().getCep());
 
 					getFunc().setDataAdmissao();
-					System.out.println(getFunc().getDataAdmissao());
 
 					// getFunc().setDataNascimento(cadastroFuncionario.getTextDataNascimento().getText());
 					getFunc().setDataNascimento(getFunc().getDataAdmissao());
@@ -138,14 +137,22 @@ public class InputListenerCadastroFuncionario implements MouseListener {
 
 					getFunc().setSenha(cadastroFuncionario.getTextPassword1().getText());
 
-					funcDAO.gravarFuncionario(func);
+					if (funcDAO.verificaCPF(func.getCpf()))
+						JOptionPane.showMessageDialog(null, "CPF já se encontra cadastrado em nosso sistema!", null,
+								JOptionPane.ERROR_MESSAGE);
+					else
+						funcDAO.gravarFuncionario(func);
 
 				} else {
 					int result = JOptionPane.showConfirmDialog(null, "Deseja Realizar o Cadastro sem Imagem?",
 							"Cadastrar", JOptionPane.YES_NO_OPTION);
 					if (result == JOptionPane.YES_OPTION) {
-						funcDAO.gravarFuncionario(func);
-						// System.out.println(func.get);
+
+						if (funcDAO.verificaCPF(func.getCpf()))
+							JOptionPane.showMessageDialog(null, "CPF já se encontra cadastrado em nosso sistema!", null,
+									JOptionPane.ERROR_MESSAGE);
+						else
+							funcDAO.gravarFuncionario(func);
 					}
 				}
 			} else {

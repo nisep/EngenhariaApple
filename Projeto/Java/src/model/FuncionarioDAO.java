@@ -94,7 +94,7 @@ public class FuncionarioDAO {
 		try {
 			origem = new FileInputStream(caminho);
 			System.out.println();
-			destino = new FileOutputStream("/Media/Funcionario/" + codigo + ".jpg");
+			destino = new FileOutputStream("Media/Funcionario/" + codigo + ".jpg");
 			fcOrigem = origem.getChannel();
 			fcDestino = destino.getChannel();
 			fcOrigem.transferTo(0, fcOrigem.size(), fcDestino);
@@ -108,4 +108,8 @@ public class FuncionarioDAO {
 	
 
 	}
+
+		
+
+
 }
