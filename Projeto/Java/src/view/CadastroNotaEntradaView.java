@@ -3,33 +3,41 @@ package view;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
 import control.InputListenerCadastroNotaEntrada;
 
 public class CadastroNotaEntradaView extends JDialog {
-	
+
 	private static final long serialVersionUID = 967851639105823465L;
 	InputListenerCadastroNotaEntrada listener;
 	private JPanel contentPanel;
-	private JPanel panelFoto;
-	private JTextField textCodigo;
-	private JLabel lblCodigo;
-	private JButton btnPesquisarImagem;
-	private JLabel lblNome;
-	private JTextField textNome;
-	private JLabel lblDataCadastro;
-	private JTextField txtDataDoCadastro;
+	private JLabel lblNomeCliente;
+	private JLabel lblFuncionario;
 	private JButton btnCancelar;
 	private JButton btnGravar;
+	private JComboBox<Object> comboBoxCliente;
+	private JComboBox<Object> comboBoxFuncionario;
+	private JComboBox<Object> comboBoxProduto;
+	private JLabel labelProduto;
+	private JLabel lblQuantidade;
+	private JLabel lblPreoTotalr;
+	private JTextField textPreco;
+	private JSpinner spinnerQtde;
+	private JLabel lblDataEmissao;
+	private JTextField txtDataEmissao;
+	private JTextField textCodigo;
+	private JLabel lblCodigo;
 
 	public static void main(String[] args) {
 		try {
-			CadastroNotaEntradaView dialog = new CadastroNotaEntradaView();
+			EditarNotaEntradaView dialog = new EditarNotaEntradaView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -43,34 +51,17 @@ public class CadastroNotaEntradaView extends JDialog {
 		initializeListeners();
 
 	}
-	
+
 	public void initializeListeners() {
 		getBtnGravar().addMouseListener(listener);
 		getBtnCancelar().addMouseListener(listener);
-		getbtnPesquisarImagem().addMouseListener(listener);
 	}
 
 	public void initialize() {
 		this.setModal(true);
-		setBounds(100, 100, 649, 500);
+		setBounds(100, 100, 649, 294);
 		setContentPane(getContentPanel());
-
-	}
-
-	public JButton getbtnPesquisarImagem() {
-		if (btnPesquisarImagem == null) {
-			btnPesquisarImagem = new JButton("Pesquisar Imagem");
-			btnPesquisarImagem.setBounds(403, 362, 147, 23);
-		}
-		return btnPesquisarImagem;
-	}
-	
-	public JPanel getpanelFoto() {
-		if (panelFoto == null) {
-			panelFoto = new JPanel();
-			panelFoto.setBounds(340, 70, 275, 281);
-		}
-		return panelFoto;
+		setTitle("Cadastro de Nota de Entrada");
 
 	}
 
@@ -81,89 +72,157 @@ public class CadastroNotaEntradaView extends JDialog {
 			contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
 			contentPanel.setLayout(null);
-			contentPanel.add(getTextCodigo());
-			contentPanel.add(getLblCodigo());
-			contentPanel.add(getLblNome());
-			contentPanel.add(getTextNome());
-			contentPanel.add(getTextDataCadastro());
-			contentPanel.add(getLblDataCadastro());
-			contentPanel.add(getbtnPesquisarImagem());
-
-			contentPanel.add(getpanelFoto());
+			contentPanel.add(getLblNomeCliente());
 			contentPanel.add(getBtnCancelar());
 			contentPanel.add(getBtnGravar());
-			
-			
+			contentPanel.add(getComboBoxCliente());
+			contentPanel.add(getLblFuncionario());
+			contentPanel.add(getComboBoxFuncionario());
+			contentPanel.add(getComboBoxProduto());
+			contentPanel.add(getLabelProduto());
+			contentPanel.add(getLblQuantidade());
+			contentPanel.add(getLblPreoTotalr());
+			contentPanel.add(getTextPreco());
+			contentPanel.add(getSpinnerQtde());
+			contentPanel.add(getLblCodigo());
+			contentPanel.add(getTextCodigo());
+			contentPanel.add(getTextDataEmissao());
+			contentPanel.add(getLblDataEmissao());
+
 		}
 		return contentPanel;
+	}
+
+	private JLabel getLblNomeCliente() {
+		if (lblNomeCliente == null) {
+			lblNomeCliente = new JLabel("Cliente");
+			lblNomeCliente.setBounds(30, 126, 112, 14);
+		}
+		return lblNomeCliente;
+	}
+
+	private JLabel getLblFuncionario() {
+		if (lblFuncionario == null) {
+			lblFuncionario = new JLabel("Funcion\u00E1rio");
+			lblFuncionario.setBounds(30, 70, 75, 14);
+		}
+		return lblFuncionario;
+	}
+
+	public JButton getBtnCancelar() {
+		if (btnCancelar == null) {
+			btnCancelar = new JButton("Cancelar");
+			btnCancelar.setBounds(485, 215, 89, 23);
+		}
+		return btnCancelar;
+	}
+
+	public JButton getBtnGravar() {
+		if (btnGravar == null) {
+			btnGravar = new JButton("Gravar");
+			btnGravar.setBounds(386, 215, 89, 23);
+		}
+		return btnGravar;
+	}
+
+	public JComboBox<Object> getComboBoxCliente() {
+		if (comboBoxCliente == null) {
+			comboBoxCliente = new JComboBox<Object>();
+			comboBoxCliente.setBounds(30, 151, 281, 20);
+		}
+		return comboBoxCliente;
+	}
+
+	public JComboBox<Object> getComboBoxFuncionario() {
+		if (comboBoxFuncionario == null) {
+			comboBoxFuncionario = new JComboBox<Object>();
+			comboBoxFuncionario.setBounds(30, 95, 281, 20);
+		}
+		return comboBoxFuncionario;
+	}
+
+	public JComboBox<Object> getComboBoxProduto() {
+		if (comboBoxProduto == null) {
+			comboBoxProduto = new JComboBox<Object>();
+			comboBoxProduto.setBounds(342, 37, 281, 20);
+		}
+		return comboBoxProduto;
+	}
+
+	public JLabel getLabelProduto() {
+		if (labelProduto == null) {
+			labelProduto = new JLabel("Produto");
+			labelProduto.setBounds(342, 12, 75, 14);
+		}
+		return labelProduto;
+	}
+
+	public JLabel getLblQuantidade() {
+		if (lblQuantidade == null) {
+			lblQuantidade = new JLabel("Quantidade");
+			lblQuantidade.setBounds(342, 74, 75, 14);
+		}
+		return lblQuantidade;
+	}
+
+	public JLabel getLblPreoTotalr() {
+		if (lblPreoTotalr == null) {
+			lblPreoTotalr = new JLabel("Pre\u00E7o Total (R$)");
+			lblPreoTotalr.setBounds(342, 130, 130, 14);
+		}
+		return lblPreoTotalr;
+	}
+
+	public JTextField getTextPreco() {
+		if (textPreco == null) {
+			textPreco = new JTextField();
+			textPreco.setEditable(true);
+			textPreco.setBounds(342, 155, 281, 20);
+			textPreco.setColumns(10);
+		}
+		return textPreco;
+	}
+
+	public JSpinner getSpinnerQtde() {
+		if (spinnerQtde == null) {
+			spinnerQtde = new JSpinner();
+			spinnerQtde.setBounds(342, 99, 281, 20);
+		}
+		return spinnerQtde;
 	}
 
 	public JTextField getTextCodigo() {
 		if (textCodigo == null) {
 			textCodigo = new JTextField();
 			textCodigo.setBounds(30, 37, 281, 22);
+			textCodigo.setEditable(true);
 		}
 		return textCodigo;
 	}
-	
-	public JTextField getTextNome() {
-		if (textNome == null) {
-			textNome = new JTextField();
-			textNome.setBounds(30, 95, 281, 20);
-			textNome.setColumns(10);
-		}
-		return textNome;
-	}
-	
+
 	public JLabel getLblCodigo() {
 		if (lblCodigo == null) {
 			lblCodigo = new JLabel("Código");
-			lblCodigo.setBounds(34, 12, 46, 14);
+			lblCodigo.setBounds(30, 12, 277, 14);
 		}
 		return lblCodigo;
 	}
 
-	private JLabel getLblNome() {
-		if (lblNome == null) {
-			lblNome = new JLabel("Nome");
-			lblNome.setBounds(30, 70, 46, 14);
+	public JTextField getTextDataEmissao() {
+		if (txtDataEmissao == null) {
+			txtDataEmissao = new JTextField();
+			txtDataEmissao.setBounds(30, 215, 284, 20);
+			txtDataEmissao.setColumns(10);
+			txtDataEmissao.setEditable(true);
 		}
-		return lblNome;
-	}
-	
-	public JButton getBtnCancelar() {
-		if (btnCancelar == null) {
-			btnCancelar = new JButton("Cancelar");
-			btnCancelar.setBounds(534, 427, 89, 23);
-		}
-		return btnCancelar;
-	}
-	public JButton getBtnGravar() {
-		if (btnGravar == null) {
-			btnGravar = new JButton("Gravar");
-			btnGravar.setBounds(435, 427, 89, 23);
-		}
-		return btnGravar;
-	}
-	
-
-	public JTextField getTextDataCadastro() {
-		if (txtDataDoCadastro == null) {
-			txtDataDoCadastro = new JTextField();
-			txtDataDoCadastro.setBounds(339, 38, 86, 20);
-			txtDataDoCadastro.setColumns(10);
-		}
-		return txtDataDoCadastro;
-	}
-	
-	public JLabel getLblDataCadastro() {
-		if (lblDataCadastro == null) {
-			lblDataCadastro = new JLabel("Data do Cadastro");
-			lblDataCadastro.setBounds(339, 12, 120, 14);
-		}
-		return lblDataCadastro;
+		return txtDataEmissao;
 	}
 
-
-
+	public JLabel getLblDataEmissao() {
+		if (lblDataEmissao == null) {
+			lblDataEmissao = new JLabel("Data de Emissao da NFe");
+			lblDataEmissao.setBounds(30, 190, 120, 14);
+		}
+		return lblDataEmissao;
+	}
 }

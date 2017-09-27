@@ -28,7 +28,7 @@ public class InputListenerCadastroCliente implements MouseListener {
 			cadastroCliente.dispose();
 		} else if ((e.getSource()) == cadastroCliente.getBtnGravar()) {
 			System.out.println("Botão ok Clicado");
-			capturarDadosFunc();
+			capturarDadosCliente();
 		} else if ((e.getSource()) == cadastroCliente.getbtnPesquisarImagem()) {
 			getImagem();
 		}
@@ -59,7 +59,7 @@ public class InputListenerCadastroCliente implements MouseListener {
 
 	}
 
-	public void capturarDadosFunc() {
+	public void capturarDadosCliente() {
 		// TODO Auto-generated method stub
 		if (!(cadastroCliente.getTextNome().getText().equals("")
 				|| cadastroCliente.getTextCPF().getText().equals("")
