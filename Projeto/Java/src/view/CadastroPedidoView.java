@@ -3,9 +3,11 @@ package view;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
@@ -19,16 +21,18 @@ public class CadastroPedidoView extends JDialog {
 	private static final long serialVersionUID = 7876262101294494488L;
 	InputListenerCadastroPedido listener;
 	private JPanel contentPanel;
-	private JPanel panelFoto;
-	private JTextField textCodigo;
-	private JLabel lblCodigo;
-	private JButton btnPesquisarImagem;
-	private JLabel lblNome;
-	private JTextField textNome;
-	private JLabel lblDataCadastro;
-	private JTextField txtDataDoCadastro;
+	private JLabel lblNomeCliente;
+	private JLabel lblFuncionario;
 	private JButton btnCancelar;
 	private JButton btnGravar;
+	private JComboBox<Object> comboBoxCliente;
+	private JComboBox<Object> comboBoxFuncionario;
+	private JComboBox<Object> comboBoxProduto;
+	private JLabel labelProduto;
+	private JLabel lblQuantidade;
+	private JLabel lblPreoTotalr;
+	private JTextField textPreco;
+	private JSpinner spinnerQtde;
 
 	public static void main(String[] args) {
 		try {
@@ -50,30 +54,13 @@ public class CadastroPedidoView extends JDialog {
 	public void initializeListeners() {
 		getBtnGravar().addMouseListener(listener);
 		getBtnCancelar().addMouseListener(listener);
-		getbtnPesquisarImagem().addMouseListener(listener);
 	}
 
 	public void initialize() {
 		this.setModal(true);
-		setBounds(100, 100, 649, 500);
+		setBounds(100, 100, 649, 275);
 		setContentPane(getContentPanel());
-
-	}
-
-	public JButton getbtnPesquisarImagem() {
-		if (btnPesquisarImagem == null) {
-			btnPesquisarImagem = new JButton("Pesquisar Imagem");
-			btnPesquisarImagem.setBounds(403, 362, 147, 23);
-		}
-		return btnPesquisarImagem;
-	}
-
-	public JPanel getpanelFoto() {
-		if (panelFoto == null) {
-			panelFoto = new JPanel();
-			panelFoto.setBounds(340, 70, 275, 281);
-		}
-		return panelFoto;
+		setTitle("Cadastro de Pedido");
 
 	}
 
@@ -84,59 +71,43 @@ public class CadastroPedidoView extends JDialog {
 			contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
 			contentPanel.setLayout(null);
-			contentPanel.add(getTextCodigo());
-			contentPanel.add(getLblCodigo());
-			contentPanel.add(getLblNome());
-			contentPanel.add(getTextNome());
-			contentPanel.add(getTextDataCadastro());
-			contentPanel.add(getLblDataCadastro());
-			contentPanel.add(getbtnPesquisarImagem());
-
-			contentPanel.add(getpanelFoto());
+			contentPanel.add(getLblNomeCliente());
 			contentPanel.add(getBtnCancelar());
 			contentPanel.add(getBtnGravar());
+			contentPanel.add(getComboBoxCliente());
+			contentPanel.add(getLblFuncionario());
+			contentPanel.add(getComboBoxFuncionario());
+			contentPanel.add(getComboBoxProduto());
+			contentPanel.add(getLabelProduto());
+			contentPanel.add(getLblQuantidade());
+			contentPanel.add(getLblPreoTotalr());
+			contentPanel.add(getTextPreco());
+			contentPanel.add(getSpinnerQtde());
 
 		}
 		return contentPanel;
 	}
 
-	public JTextField getTextCodigo() {
-		if (textCodigo == null) {
-			textCodigo = new JTextField();
-			textCodigo.setBounds(30, 37, 281, 22);
+	private JLabel getLblNomeCliente() {
+		if (lblNomeCliente == null) {
+			lblNomeCliente = new JLabel("Cliente");
+			lblNomeCliente.setBounds(30, 12, 112, 14);
 		}
-		return textCodigo;
+		return lblNomeCliente;
 	}
-
-	public JTextField getTextNome() {
-		if (textNome == null) {
-			textNome = new JTextField();
-			textNome.setBounds(30, 95, 281, 20);
-			textNome.setColumns(10);
+	
+	private JLabel getLblFuncionario() {
+		if (lblFuncionario == null) {
+			lblFuncionario = new JLabel("Funcion\u00E1rio");
+			lblFuncionario.setBounds(30, 70, 75, 14);
 		}
-		return textNome;
-	}
-
-	public JLabel getLblCodigo() {
-		if (lblCodigo == null) {
-			lblCodigo = new JLabel("Código");
-			lblCodigo.setBounds(34, 12, 46, 14);
-		}
-		return lblCodigo;
-	}
-
-	private JLabel getLblNome() {
-		if (lblNome == null) {
-			lblNome = new JLabel("Nome");
-			lblNome.setBounds(30, 70, 46, 14);
-		}
-		return lblNome;
+		return lblFuncionario;
 	}
 
 	public JButton getBtnCancelar() {
 		if (btnCancelar == null) {
 			btnCancelar = new JButton("Cancelar");
-			btnCancelar.setBounds(534, 427, 89, 23);
+			btnCancelar.setBounds(534, 202, 89, 23);
 		}
 		return btnCancelar;
 	}
@@ -144,26 +115,70 @@ public class CadastroPedidoView extends JDialog {
 	public JButton getBtnGravar() {
 		if (btnGravar == null) {
 			btnGravar = new JButton("Gravar");
-			btnGravar.setBounds(435, 427, 89, 23);
+			btnGravar.setBounds(435, 202, 89, 23);
 		}
 		return btnGravar;
 	}
-
-	public JTextField getTextDataCadastro() {
-		if (txtDataDoCadastro == null) {
-			txtDataDoCadastro = new JTextField();
-			txtDataDoCadastro.setBounds(339, 38, 86, 20);
-			txtDataDoCadastro.setColumns(10);
+	
+	public JComboBox<Object> getComboBoxCliente() {
+		if(comboBoxCliente == null) {
+			comboBoxCliente = new JComboBox<Object>();
+			comboBoxCliente.setBounds(30, 37, 281, 20);
 		}
-		return txtDataDoCadastro;
+		return comboBoxCliente;
+	}
+	
+	public JComboBox<Object> getComboBoxFuncionario() {
+		if (comboBoxFuncionario == null) {
+			comboBoxFuncionario = new JComboBox<Object>();
+			comboBoxFuncionario.setBounds(30, 95, 281, 20);
+		}
+		return comboBoxFuncionario;
+	}
+	public JComboBox<Object> getComboBoxProduto() {
+		if (comboBoxProduto == null) {
+			comboBoxProduto = new JComboBox<Object>();
+			comboBoxProduto.setBounds(342, 37, 281, 20);
+		}
+		return comboBoxProduto;
+	}
+	
+	public JLabel getLabelProduto() {
+		if (labelProduto == null) {
+			labelProduto = new JLabel("Produto");
+			labelProduto.setBounds(342, 12, 75, 14);
+		}
+		return labelProduto;
+	}
+	public JLabel getLblQuantidade() {
+		if (lblQuantidade == null) {
+			lblQuantidade = new JLabel("Quantidade");
+			lblQuantidade.setBounds(342, 70, 75, 14);
+		}
+		return lblQuantidade;
+	}
+	public JLabel getLblPreoTotalr() {
+		if (lblPreoTotalr == null) {
+			lblPreoTotalr = new JLabel("Pre\u00E7o Total (R$)");
+			lblPreoTotalr.setBounds(342, 126, 130, 14);
+		}
+		return lblPreoTotalr;
+	}
+	public JTextField getTextPreco() {
+		if (textPreco == null) {
+			textPreco = new JTextField();
+			textPreco.setEditable(false);
+			textPreco.setBounds(342, 151, 281, 20);
+			textPreco.setColumns(10);
+		}
+		return textPreco;
 	}
 
-	public JLabel getLblDataCadastro() {
-		if (lblDataCadastro == null) {
-			lblDataCadastro = new JLabel("Data do Cadastro");
-			lblDataCadastro.setBounds(339, 12, 120, 14);
+	public JSpinner getSpinnerQtde() {
+		if (spinnerQtde == null) {
+			spinnerQtde = new JSpinner();
+			spinnerQtde.setBounds(342, 95, 281, 20);
 		}
-		return lblDataCadastro;
+		return spinnerQtde;
 	}
-
 }

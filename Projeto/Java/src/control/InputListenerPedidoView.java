@@ -3,6 +3,7 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import view.CadastroPedidoView;
 import view.PedidoView;
 
 public class InputListenerPedidoView implements MouseListener {
@@ -20,6 +21,7 @@ public class InputListenerPedidoView implements MouseListener {
 			System.out.println("Botão Ok clicado");
 		}else if ((e.getSource()) == pedidoView.getbtnNovoPedido()) {
 			System.out.println("Botão Novo Clicado");
+			new CadastroPedidoView().setVisible(true);
 		}else if(e.getSource() == pedidoView.getTablePedido()) {
 			System.err.println("Tabela clicada, linha: "+pedidoView.getTablePedido().getSelectedRow());
 		}
