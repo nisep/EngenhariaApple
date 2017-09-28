@@ -1,6 +1,6 @@
 package control;
 
-import view.PrincipalFunc;
+import view.PrincipalAdm;
 
 public class Main {
 
@@ -9,7 +9,7 @@ public class Main {
 				javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
 				com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "mac");
 		    } catch (Exception e) {}
-		new PrincipalFunc().setVisible(true);
+		new PrincipalAdm().setVisible(true);
 	}
 
 }
