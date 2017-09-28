@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import control.InputListenerFuncionarioView;
+import model.FuncionarioDAO;
 
 public class FuncionarioView extends JDialog {
 
@@ -31,6 +32,7 @@ public class FuncionarioView extends JDialog {
 	private JLabel lblBuscarPorNome;
 	private JScrollPane scrollBar;
 	InputListenerFuncionarioView listener;
+	private FuncionarioDAO funcDAO = new FuncionarioDAO();
 
 	/**
 	 * Launch the application.
@@ -66,11 +68,10 @@ public class FuncionarioView extends JDialog {
 
 	public JTable getTableFuncionario() {
 		if(tableFuncionario == null){
+			String[][] funcs = funcDAO.listaFuncionarioArray("");
 			String[] colunas = {"id","Nome", "CPF", "Endereço", "Telefone","Nascimento"};
-			String[][] dados = {{"1","teste","teste","teste","teste","teste"},
-					{"2","teste2","teste2","teste2","teste2","teste"},
-					{"3","teste3","teste3","teste3","teste3","teste"}};
-			tableFuncionario = new JTable(new DefaultTableModel(dados,colunas) {
+			
+			DefaultTableModel model = new DefaultTableModel(funcs,colunas) {
 				 /**
 				 * 
 				 */
@@ -82,7 +83,8 @@ public class FuncionarioView extends JDialog {
 				        public boolean isCellEditable(int rowIndex, int columnIndex) {  
 				            return canEdit [columnIndex];  
 				        }
-			});
+			};
+			tableFuncionario = new JTable(model);
 		}
 		return tableFuncionario;
 	}

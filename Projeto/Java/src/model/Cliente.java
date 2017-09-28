@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 public class Cliente {
 
 	private int idCliente;
@@ -12,9 +14,10 @@ public class Cliente {
 	private String bairro;
 	private String cidade;
 	private String cep;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private long telefone;
 	private long celular;
+	private Date dataCadastro;
 	
 	public long getCelular() {
 		return celular;
@@ -76,11 +79,18 @@ public class Cliente {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public String getDataNascimento() {
+
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = new Date(System.currentTimeMillis());
 	}
 	public long getTelefone() {
 		return telefone;

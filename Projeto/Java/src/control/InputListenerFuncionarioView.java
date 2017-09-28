@@ -3,17 +3,14 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import model.FuncionarioDAO;
 import view.CadastroFuncionarioView;
-import view.EditarFuncionarioView;
 import view.FuncionarioView;
 
 public class InputListenerFuncionarioView implements MouseListener {
 	FuncionarioView funcionarioView;
-	//private Funcionario func;
 	private FuncionarioDAO funcDAO = new FuncionarioDAO();
 	
 
