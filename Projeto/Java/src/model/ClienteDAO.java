@@ -12,7 +12,7 @@ import java.sql.Statement;
 import control.DataBase;
 
 public class ClienteDAO {
-	DataBase bd = new DataBase();
+	DataBase bd = DataBase.getInstance();
 	Connection conex;
 
 	public boolean gravarCliente(Cliente c) {

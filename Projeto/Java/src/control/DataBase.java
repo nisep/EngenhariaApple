@@ -12,6 +12,14 @@ public class DataBase {
 	String serverName = "localhost";
 	String mydatabase ="apple";
 	String url = "jdbc:mysql://" + serverName + "/" + mydatabase+"?autoReconnect=true&useSSL=false";
+	private static DataBase dataBase;
+	
+	public static synchronized DataBase getInstance() {
+		if(dataBase == null) {
+			dataBase = new DataBase();
+		}
+		return dataBase;
+	}
 	
 
 	public DataBase() {

@@ -23,7 +23,6 @@ public class Contador implements Runnable{
 				else i++;
 			}
 		} catch (InterruptedException e) {
-			System.out.println("ERRO!");
 		}
 		
 	}

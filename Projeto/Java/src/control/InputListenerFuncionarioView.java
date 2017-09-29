@@ -2,6 +2,8 @@ package control;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -9,7 +11,7 @@ import model.FuncionarioDAO;
 import view.CadastroFuncionarioView;
 import view.FuncionarioView;
 
-public class InputListenerFuncionarioView implements MouseListener {
+public class InputListenerFuncionarioView implements MouseListener, WindowListener {
 	FuncionarioView funcionarioView;
 	private FuncionarioDAO funcDAO = new FuncionarioDAO();
 	
@@ -77,6 +79,46 @@ public class InputListenerFuncionarioView implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		funcionarioView.getT1().interrupt();
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

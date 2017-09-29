@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import control.DataBase;
 
 public class FuncionarioDAO {
-	DataBase bd = new DataBase();
+	DataBase bd = DataBase.getInstance();
 	Connection conex = bd.Conectar();
 
 	public boolean gravarFuncionario(Funcionario f) {
@@ -174,6 +174,18 @@ public class FuncionarioDAO {
 				func.setDataNascimento(rs.getDate("dataNascFunc"));
 				func.setTelefone(rs.getLong("telefoneFunc"));
 				func.setRua(rs.getString("ruaFunc"));
+				func.setBairro(rs.getString("bairroFunc"));
+				func.setCidade(rs.getString("cidadeFunc"));
+				func.setAdministrador(rs.getBoolean("administrador"));
+				func.setCelular(rs.getLong("celularFunc"));
+				func.setCep(rs.getString("cepFunc"));
+				func.setComissao(rs.getDouble("comissaoFunc"));
+				func.setComplemento(rs.getString("compFunc"));
+				func.setAdmissao(rs.getDate("dataAdmissao"));
+				func.setFoto(rs.getString("fotoFunc"));
+				func.setNumero(rs.getString("numeroFunc"));
+				func.setSalario(rs.getDouble("salarioFunc"));
+				func.setSenha(rs.getString("senhaFunc"));
 				funcs.add(func);
 			}
 			rs.close();
@@ -204,8 +216,8 @@ public class FuncionarioDAO {
 				funcs[cont][1] = rs.getString("nomeFunc");
 				funcs[cont][0] = "" + rs.getInt("idFuncionario");
 				funcs[cont][2] = "" + rs.getLong("cpfFunc");
-				funcs[cont][4] = "" + rs.getDate("dataNascFunc");
-				funcs[cont][3] = "" + rs.getLong("telefoneFunc");
+				funcs[cont][4] = "" + rs.getLong("telefoneFunc");
+				funcs[cont][3] = "" + rs.getDate("dataNascFunc");
 				funcs[cont][5] = rs.getString("ruaFunc");
 				cont++;
 			}

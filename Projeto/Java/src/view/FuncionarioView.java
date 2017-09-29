@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import control.AtualizaTabela;
 import control.InputListenerFuncionarioView;
 import model.FuncionarioDAO;
 
@@ -32,22 +32,16 @@ public class FuncionarioView extends JDialog {
 	private JLabel lblBuscarPorNome;
 	private JScrollPane scrollBar;
 	InputListenerFuncionarioView listener;
+	private AtualizaTabela aT1;
+	private Thread t1;
 	private FuncionarioDAO funcDAO = new FuncionarioDAO();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FuncionarioView frame = new FuncionarioView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		FuncionarioView frame = new FuncionarioView();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -134,6 +128,7 @@ public class FuncionarioView extends JDialog {
 		getBuscarButton().addMouseListener(listener);
 		getbtnNovoFuncionario().addMouseListener(listener);
 		getTableFuncionario().addMouseListener(listener);
+		this.addWindowListener(listener);
 	}
 	
 	public void initialize(){
@@ -156,5 +151,14 @@ public class FuncionarioView extends JDialog {
 		panel.add(getbtnNovoFuncionario());	
 		panel.add(getTextBusca());		
 		panel.add(getlblBuscarPorNome());
+		getT1().start();
+	}
+	
+	public Thread getT1() {
+		if(t1 == null) {
+			aT1 = new AtualizaTabela(this);
+			t1 = new Thread(aT1);
+		}
+		return t1;
 	}
 }

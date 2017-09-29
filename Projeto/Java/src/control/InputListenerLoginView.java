@@ -3,9 +3,13 @@ package control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
+import model.LoginDAO;
 import view.LoginView;
 import view.Principal;
 import view.PrincipalAdm;
+import view.PrincipalFunc;
 
 public class InputListenerLoginView implements MouseListener{
 	LoginView loginView;
@@ -18,7 +22,6 @@ public class InputListenerLoginView implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == loginView.getBtnLogin()) {
 			capturaDadosLogin();
-			loginView.dispose();
 		}else if(e.getSource() == loginView.getBtnCancelar()) {
 			new Principal().setVisible(true);
 			loginView.dispose();
@@ -47,6 +50,26 @@ public class InputListenerLoginView implements MouseListener{
 	
 	public void capturaDadosLogin() {
 		//TODO: Pegar dados e verificar login
-		new PrincipalAdm().setVisible(true);
+		
+		try {
+			Long cpf = Long.parseLong(loginView.getTextCpf().getText());
+			String senha = String.copyValueOf(loginView.getPasswordField().getPassword());
+			int flag = new LoginDAO().verificarSeExisteLogin(cpf, senha);
+			if(flag == 2) {
+				new PrincipalFunc().setVisible(true);
+				loginView.dispose();
+			}else if(flag == 1) {
+				new PrincipalAdm().setVisible(true);
+				loginView.dispose();
+			}else {
+				JOptionPane.showMessageDialog(null, "Login Inválido!","Erro Login", JOptionPane.ERROR_MESSAGE);
+				loginView.getPasswordField().setText("");
+			}
+		}catch(NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "O campo CPF de conter apenas números!","Erro Login", JOptionPane.ERROR_MESSAGE);
+			loginView.getPasswordField().setText("");
+		}
+		
+		
 	}
 }

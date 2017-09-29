@@ -133,6 +133,9 @@ public class Funcionario {
 	public void setDataAdmissao() {
 		this.dataAdmissao = new Date(System.currentTimeMillis());
 	}
+	public void setAdmissao(Date admissao) {
+		this.dataAdmissao = admissao;
+	}
 	
 	
 	
